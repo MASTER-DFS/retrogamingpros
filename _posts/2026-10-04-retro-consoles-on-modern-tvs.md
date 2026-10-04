@@ -52,4 +52,4 @@ A good CRT television still has zero lag and handles 240p natively. It's also th
 - **A shelf of consoles:** a quality upscaler with RGB or component cables.
 - **One console you play constantly:** an internal HDMI or RGB mod.
 
-We install RGB and HDMI mods and can help you pick the right setup for your TV. Just ask when you book a repair.
+Not sure what your console and TV need? [Send us a question](/#contact) and we'll point you in the right direction.

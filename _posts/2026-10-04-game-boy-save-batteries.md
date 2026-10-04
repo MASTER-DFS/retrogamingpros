@@ -31,12 +31,12 @@ Your save is safe in that case. You'll just lose things like berry growth and ti
 
 This is the important part. **On SRAM games, removing the old battery wipes the save.** Pulling the battery out and popping in a new one will give you a working cartridge with an empty save file.
 
-Here's how we do it on the bench:
+Here's the safe way to do it:
 
-1. **Back up the save first.** We read the save off the cartridge with a dedicated cartridge reader and keep it as a file.
-2. **Swap the battery.** We remove the old battery and fit a new tabbed CR2025, soldered in properly. We don't use tape or a loose coin cell wedged in place.
+1. **Back up the save first.** Read the save off the cartridge with a dedicated cartridge reader and keep it as a file.
+2. **Swap the battery.** Remove the old battery and fit a new tabbed CR2025, soldered in properly. Avoid tape or a loose coin cell wedged in place.
 3. **Write the save back** onto the cartridge and confirm it loads.
-4. **Hand you a copy of the save file** if you'd like one, so you have a backup even if something happens to the cartridge later.
+4. **Keep the save file somewhere safe**, so you have a backup even if something happens to the cartridge later.
 
 <div class="callout"><b>TIP</b>If your game still has its save today, don't wait for the battery to fail. A backup is easy while the save still exists and impossible once it's gone.</div>
 
@@ -44,4 +44,4 @@ Here's how we do it on the bench:
 
 As a rough guide, any Game Boy or Game Boy Color game that saves progress, rather than giving you passwords, probably has a battery. That includes the Pokémon games, *The Legend of Zelda: Link's Awakening* and many RPGs. Many Super Nintendo cartridges that save use the same kind of battery, usually a CR2032.
 
-Not sure about yours? Send us the name of the game, and we'll tell you whether it has a battery and whether the save can be backed up.
+Not sure about yours? [Ask us](/#contact) with the name of the game, and we'll help you find out.

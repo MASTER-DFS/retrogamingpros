@@ -1,6 +1,6 @@
 # Retro Gaming Pros
 
-The website for [retrogamingpros.com](https://retrogamingpros.com): retro console repair, restoration, mods and tested consoles for sale.
+The website for [retrogamingpros.com](https://retrogamingpros.com): retro gaming guides, console history and hardware explainers, plus NES and Atari repairs.
 
 GitHub Pages builds the site with Jekyll every time `main` changes. The site is usually live a minute or two after a change.
 
@@ -42,5 +42,5 @@ GitHub Pages builds the site with Jekyll every time `main` changes. The site is 
 | `_posts/` | Blog posts |
 | `_layouts/`, `_includes/` | Shared page layout, header and footer |
 | `assets/css/site.css` | All styles |
-| `assets/js/site.js` | Pixel art, animations, shop and repair form |
+| `assets/js/site.js` | Pixel art, animations, system explorer and contact form |
 | `CNAME` | The custom domain |

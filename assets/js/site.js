@@ -1,6 +1,6 @@
 (function(){
   // ---- pixel art (drawn to tiny canvases, scaled up crisp) ----
-  var PAL={a:'#ffb238',r:'#ef4a3c',w:'#efeaf8',g:'#a9a3c9',d:'#3a3670',k:'#0b0a18',t:'#4fd1c5',p:'#7a6fd0',s:'#cfc8b8'};
+  var PAL={a:'#ffb238',r:'#ef4a3c',w:'#efeaf8',g:'#a9a3c9',d:'#3a3670',k:'#0b0a18',t:'#4fd1c5',p:'#7a6fd0',s:'#cfc8b8',b:'#8a5a2b',o:'#5e3a1a'};
   function draw(cv,rows){if(!cv||!rows)return;var c=cv.getContext('2d');cv.width=rows[0].length;cv.height=rows.length;rows.forEach(function(r,y){for(var x=0;x<r.length;x++){var ch=r[x];if(ch!=='.'&&PAL[ch]){c.fillStyle=PAL[ch];c.fillRect(x,y,1,1);}}});}
   var ART={
     logo:["............","..rrrrrrrr..",".rwwwwwwwwr.",".rwkkkkkkwr.",".rwkaaaakwr.",".rwkakkakwr.",".rwkaaaakwr.",".rwkkkkkkwr.",".rwwwwwwwwr.",".rrrwrrwrrr.","..rrrrrrrr..","............"],
@@ -16,6 +16,9 @@
     genesis:["..............","..............",".kkkkkkkkkkkk.","kkkkkkkkkkkkkk","kkkkddddddkkkk","kkkkkkkkkkkkkk","krkkkkkkkkkkkk","kkkkkkkkkkkkkk",".kkkkkkkkkkkk.","..............","..............",".............."],
     ps1:["..............","..............",".gggggggggggg.","gggggggggggggg","gggggddddggggg","ggggdkkkkdgggg","ggggdkkkkdgggg","gggggddddggggg","gtgggggggggrgg","gggggggggggggg","..............",".............."],
     gb:["..ssssssssss..","..skkkkkkkks..","..sktttttkks..","..sktttttkks..","..sktttttkks..","..skkkkkkkks..","..ssssssssss..","..saasssrrss..","..aaassssrss..","..saassssss...","..ssssssssss..",".............."],
+    atari:["..............","..............","..kkkkkkkkkk..",".kkkkggkkkkkk.","kkkkkkkkkkkkkk","kgkgkkkkkkkgkg","kkkkkkkkkkkkkk","bbbbbbbbbbbbbb","bobobbobbobbob","bbbbbbbbbbbbbb","..............",".............."],
+    gba:["..............","..............","..............",".pppppppppppp.","pppkkkkkkkkppp","papkttttttkprp","aaakttttttkrpp","papkttttttkprp","pppkkkkkkkkppp",".pppppppppppp.","..............",".............."],
+    dc:["..............","..............",".wwwwwwwwwwww.","wwwwwwwwwwwwww","wwwwggggggwwww","wwwgwwwwwwgwww","wwwwggggggwwww","wwwwwwwwwwwwaw","wwwwwwwwwwwwww",".wwwwwwwwwwww.","..............",".............."],
     gc:["..............","..pppppppppp..",".pppppppppppp.",".ppppkkkkpppp.",".pppkppppkppp.",".ppppkkkkpppp.",".pppppppppppp.",".pppppppppppp.","..pppppppppp..","..k........k..","..............",".............."]
   };
   var $=function(id){return document.getElementById(id);};
@@ -37,7 +40,7 @@
   var fx=$('heroFx');
   if(fx&&fx.getContext){
     var ctx=fx.getContext('2d'), host=fx.parentElement;
-    var kinds=['pad','cart','gb','disc','n64','snes','handheld','nes','gc','genesis','ps1'].map(function(k){return sprite(ART[k]);});
+    var kinds=['pad','cart','gb','disc','n64','snes','handheld','nes','gc','genesis','ps1','atari','gba','dc'].map(function(k){return sprite(ART[k]);});
     var W=0,H=0,dpr=1,dim=1,items=[],stars=[],mx=0,my=0,tx=0,ty=0,last=0,running=false,visible=true;
     function rnd(a,b){return a+Math.random()*(b-a);}
     function size(){
@@ -90,7 +93,7 @@
   // ---- CRT power-on + boot screen ----
   var crt=$('crt'), boot=$('crtBoot');
   if(crt&&boot&&!reduce){
-    var lines=[['RETRO GAMING PROS  BIOS v1.3',''],['MEMORY TEST ........ ','64K OK'],['CART SLOT .......... ','CLEAN'],['SOLDER IRON ........ ','350°C'],['CAPACITORS ......... ','FRESH'],['',''],['LOADING DIAGNOSTICS',''] ];
+    var lines=[['RETRO GAMING PROS  BIOS v1.3',''],['MEMORY TEST ........ ','64K OK'],['CART SLOT .......... ','CLEAN'],['CONTROLLER 1 ....... ','READY'],['SAVE BATTERY ....... ','OK'],['',''],['LOADING SYSTEM FILES',''] ];
     boot.hidden=false;crt.classList.add('boot');
     var li=0,ci=0,txt='';
     function esc(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;');}
@@ -104,67 +107,69 @@
     setTimeout(step,700);
   }
 
-  // ---- systems marquee ----
-  var systems=['ATARI 2600','NES','SNES','NINTENDO 64','GAMECUBE','GAME BOY','GBA','SEGA GENESIS','GAME GEAR','DREAMCAST','PLAYSTATION','PS2','TURBOGRAFX-16','NEO GEO'];
-  var tr=$('systemsTrack');
-  if(tr)tr.innerHTML=systems.concat(systems).map(function(s){return '<span>'+s+'</span>';}).join('');
-
-  // ---- quick diagnosis ----
-  var DX={
-    'NES':[['Blinking red light','72-pin connector replacement + pin clean','$35','2-3 days'],['No picture / grey screen','Video RF/AV circuit repair','from $40','3-5 days'],['Want a sharper picture','RGB or HDMI mod','from $90','5-7 days']],
-    'SNES':[['No power','Fuse + regulator repair','from $30','2-3 days'],['Yellowed case','Retrobright shell restoration','$40','5-7 days'],['Blurry on modern TV','RGB mod + cable','from $50','3-5 days']],
-    'Nintendo 64':[['Loose joystick','Joystick rebuild or replacement','$25','1-2 days'],['Black screen','Power board + RCP diagnosis','from $45','3-5 days'],['Blurry on modern TV','HDMI kit install','from $90','5-7 days']],
-    'Sega Genesis':[['No sound','Audio circuit recap','from $45','3-5 days'],['No power','Power jack / regulator','$30','2-3 days'],['Blurry on modern TV','RGB / SCART setup','from $50','3-5 days']],
-    'Game Boy':[['Dim or dead pixels','IPS backlit screen install','from $65','2-4 days'],['No sound','Speaker or amp repair','$25','1-2 days'],['Worn out shell','New shell + buttons','from $30','1-2 days']],
-    'Game Gear':[['Dim screen or no sound','Full capacitor recap','$55','3-5 days'],['Want a modern screen','IPS / LCD screen upgrade','from $85','5-7 days']],
-    'PlayStation':[['Discs won\'t read','Laser calibration or swap','from $45','2-4 days'],['Disc tray stuck','Drive mechanism service','$35','2-3 days']],
-    'GameCube':[['Disc won\'t spin','Drive service + laser check','$40','2-4 days'],['No video','Digital AV / GCHD install','from $90','5-7 days']],
-    'Dreamcast':[['GD-ROM not reading','GD-ROM service or laser','from $50','3-5 days'],['Loud fan','Quiet fan swap','$25','1-2 days']],
-    'Game cartridge':[['Won\'t save my game','Save backup + new battery (CR2025)','$12','1 day'],['Won\'t boot','Pin clean + board check','$5','1 day']]
-  };
-  var sc=$('dxConsole'), ss=$('dxSymptom'), out=$('dxOut');
-  if(sc&&ss&&out){
-    Object.keys(DX).forEach(function(k){sc.add(new Option(k,k));});
-    var fillSym=function(){ss.innerHTML='';DX[sc.value].forEach(function(s,i){ss.add(new Option(s[0],i));});show();};
-    var show=function(){var s=DX[sc.value][ss.value];
-      out.innerHTML='<div class="dim">&gt; FIX: '+s[1]+'</div><div class="price">&gt; EST: '+s[2]+'</div><div class="dim">&gt; TIME: '+s[3]+' on the bench</div>';};
-    sc.addEventListener('change',fillSym); ss.addEventListener('change',show);
-    sc.value='NES'; fillSym();
-  }
-
-  // ---- products ----
-  var P=[
-    {n:'NES Console',art:'nes',cat:'nintendo',g:'A',meta:'Recapped · new 72-pin · 2 controllers',p:149},
-    {n:'Super Nintendo',art:'snes',cat:'nintendo',g:'A',meta:'Retrobrighted shell · RGB ready',p:189},
-    {n:'Nintendo 64',art:'n64',cat:'nintendo',g:'B+',meta:'Expansion Pak · rebuilt stick',p:169},
-    {n:'GameCube Indigo',art:'gc',cat:'nintendo',g:'A',meta:'Drive serviced · memory card',p:179},
-    {n:'Sega Genesis Model 1',art:'genesis',cat:'sega',g:'A-',meta:'High Definition Graphics · recapped',p:139},
-    {n:'PlayStation (SCPH-1001)',art:'ps1',cat:'sony',g:'B+',meta:'New laser · audio-out board',p:129},
-    {n:'Game Boy DMG IPS',art:'gb',cat:'handheld nintendo',g:'A',meta:'Backlit IPS · new shell · USB-C',p:159},
-    {n:'Game Boy DMG Original',art:'gb',cat:'handheld nintendo',g:'B',meta:'Original screen · tested speaker',p:89}
+  // ---- system files: CRT explorer + timeline ----
+  var SYS=[
+    {n:'Atari 2600',m:'atari',art:'atari',y:1977,cpu:'MOS 6507 @ 1.19 MHz',ram:'128 bytes',top:'Pac-Man',fact:'Games drew the picture one line at a time as the TV beam moved, a trick called racing the beam.'},
+    {n:'NES',m:'nintendo',art:'nes',y:1985,cpu:'Ricoh 2A03 @ 1.79 MHz',ram:'2 KB',top:'Super Mario Bros.',fact:'Nintendo styled the US console like a VCR so stores would stock it after the 1983 video game crash.'},
+    {n:'Sega Genesis',m:'sega',art:'genesis',y:1989,cpu:'Motorola 68000 @ 7.67 MHz',ram:'64 KB',top:'Sonic the Hedgehog',fact:'A second Z80 chip runs the sound, and with an adapter it plays Master System games.'},
+    {n:'Game Boy',m:'nintendo handheld',art:'gb',y:1989,cpu:'Sharp LR35902 @ 4.19 MHz',ram:'8 KB',top:'Tetris',fact:'The screen shows four shades of green-gray at 160 by 144 pixels.'},
+    {n:'Super Nintendo',m:'nintendo',art:'snes',y:1991,cpu:'Ricoh 5A22 @ 3.58 MHz',ram:'128 KB',top:'Super Mario World',fact:'Mode 7 scales and rotates a background layer, which is how F-Zero and Super Mario Kart fake 3D.'},
+    {n:'PlayStation',m:'sony',art:'ps1',y:1995,cpu:'MIPS R3000A @ 33.87 MHz',ram:'2 MB',top:'Gran Turismo',fact:'It was the first home console to sell more than 100 million units.'},
+    {n:'Nintendo 64',m:'nintendo',art:'n64',y:1996,cpu:'NEC VR4300 @ 93.75 MHz',ram:'4 MB',top:'Super Mario 64',fact:'The Expansion Pak doubles the RAM to 8 MB, and Majora’s Mask won’t run without it.'},
+    {n:'Dreamcast',m:'sega',art:'dc',y:1999,cpu:'Hitachi SH-4 @ 200 MHz',ram:'16 MB',top:'Sonic Adventure',fact:'It shipped with a built-in modem, so you could play online out of the box.'},
+    {n:'Game Boy Advance',m:'nintendo handheld',art:'gba',y:2001,cpu:'ARM7TDMI @ 16.78 MHz',ram:'288 KB',top:'Pokémon Ruby & Sapphire',fact:'It has Game Boy hardware inside, so it plays Game Boy and Game Boy Color carts too.'},
+    {n:'GameCube',m:'nintendo',art:'gc',y:2001,cpu:'IBM Gekko @ 486 MHz',ram:'24 MB',top:'Super Smash Bros. Melee',fact:'Games come on 8 cm mini discs that hold about 1.5 GB.'}
   ];
-  var grid=$('products');
-  if(grid){
-    grid.innerHTML=P.map(function(x,i){return '<article class="product" data-cat="'+x.cat+'"><div class="product-art"><span class="grade">GRADE '+x.g+'</span><canvas data-art="'+x.art+'"></canvas></div><div class="product-body"><h3>'+x.n+'</h3><span class="meta">'+x.meta+'</span><div class="product-foot"><span class="price">$'+x.p+'</span><button type="button" id="buy'+i+'" data-name="'+x.n+'">Ask about it</button></div></div></article>';}).join('');
-    grid.querySelectorAll('canvas').forEach(function(c){draw(c,ART[c.dataset.art]);});
-    grid.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;
-      $('fService').value='Repair';
-      $('fIssue').value='Hi! Is the '+b.dataset.name+' still available?';
-      $('contact').scrollIntoView({behavior:reduce?'auto':'smooth'});});
+  var pick=$('sysPick'), sysOut=$('sysOut'), auto=null;
+  function showSys(i){var x=SYS[i];pick.value=String(i);
+    sysOut.innerHTML='<div class="dim">&gt; US RELEASE: '+x.y+'</div><div class="dim">&gt; CPU: '+x.cpu+'</div><div class="dim">&gt; RAM: '+x.ram+'</div><div class="price">&gt; TOP SELLER: '+x.top.replace('&','&amp;')+'</div><div class="fact">'+x.fact+'</div>';}
+  function stopAuto(){if(auto){clearInterval(auto);auto=null;}}
+  if(pick&&sysOut){
+    SYS.forEach(function(x,i){pick.add(new Option(x.n,String(i)));});
+    showSys(1);
+    pick.addEventListener('change',function(){stopAuto();showSys(+pick.value);});
+    $('sysPrev').addEventListener('click',function(){stopAuto();showSys((+pick.value+SYS.length-1)%SYS.length);});
+    $('sysNext').addEventListener('click',function(){stopAuto();showSys((+pick.value+1)%SYS.length);});
+    // attract mode: cycle through systems until the visitor takes control
+    if(!reduce){var touched=false;['change','click'].forEach(function(ev){pick.addEventListener(ev,function(){touched=true;});});
+      setTimeout(function(){if(!touched)auto=setInterval(function(){if(!document.hidden)showSys((+pick.value+1)%SYS.length);},7000);},3200);}
+  }
+  var tl=$('timeline');
+  if(tl){
+    tl.innerHTML=SYS.map(function(x,i){return '<li class="tl-card" data-cat="'+x.m+'"><canvas data-art="'+x.art+'" aria-hidden="true"></canvas><span class="tl-year">'+x.y+'</span><h3>'+x.n+'</h3><span class="meta">'+x.cpu.split(' @ ')[0]+' · '+x.ram+' RAM</span><button type="button" data-i="'+i+'">Show on the TV</button></li>';}).join('');
+    tl.querySelectorAll('canvas').forEach(function(c){draw(c,ART[c.dataset.art]);c.style.imageRendering='pixelated';});
+    tl.addEventListener('click',function(e){var b=e.target.closest('button');if(!b||!pick)return;stopAuto();showSys(+b.dataset.i);
+      $('crt').scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'});});
     document.querySelectorAll('.chip').forEach(function(ch){ch.addEventListener('click',function(){
       document.querySelectorAll('.chip').forEach(function(o){o.setAttribute('aria-pressed',o===ch?'true':'false');});
-      var f=ch.dataset.filter;grid.querySelectorAll('.product').forEach(function(p){p.hidden=!(f==='all'||p.dataset.cat.split(' ').indexOf(f)>-1);});
+      var f=ch.dataset.filter;tl.querySelectorAll('.tl-card').forEach(function(p){p.hidden=!(f==='all'||p.dataset.cat.split(' ').indexOf(f)>-1);});
     });});
   }
 
-  // ---- repair ticket form ----
-  var fc=$('fConsole'), form=$('ticketForm');
-  if(fc&&form){
-    ['Choose a system','NES','Super Nintendo','Nintendo 64','GameCube','Game Boy / GBC','Game Boy Advance','Sega Genesis','Game Gear','Dreamcast','PlayStation','PlayStation 2','Atari 2600','TurboGrafx-16','Neo Geo','Game cartridge','Other'].forEach(function(s,i){fc.add(new Option(s,i?s:''));});
+  // ---- repair buttons preset the contact form ----
+  document.querySelectorAll('[data-topic]').forEach(function(b){b.addEventListener('click',function(){
+    var t=$('fTopic'), m=$('fMsg');if(t)t.value=b.dataset.topic;
+    if(m&&!m.value)m.value=b.dataset.topic==='Atari repair'?'Which Atari: \nWhat it does: ':'What it does: ';
+    $('contact').scrollIntoView({behavior:reduce?'auto':'smooth'});
+    setTimeout(function(){if(m)m.focus({preventScroll:true});},reduce?0:500);
+  });});
+
+  // ---- contact form: opens the visitor's email app with the message ready ----
+  var form=$('contactForm');
+  if(form){
     form.addEventListener('submit',function(e){e.preventDefault();
-      var ok=true;['fName','fEmail','fConsole'].forEach(function(id){var el=$(id);if(!el.value.trim()||(el.type==='email'&&!/\S+@\S+\.\S+/.test(el.value))){el.style.borderColor='var(--red)';ok=false;}else el.style.borderColor='';});
+      var ok=true;['fName','fEmail','fMsg'].forEach(function(id){var el=$(id);if(!el.value.trim()||(el.type==='email'&&!/\S+@\S+\.\S+/.test(el.value))){el.style.borderColor='var(--red)';ok=false;}else el.style.borderColor='';});
       if(!ok)return;
-      $('ticketNo').textContent='TICKET #RG-'+(1000+Math.floor(Math.random()*9000))+' CREATED';
-      $('ticketDone').hidden=false;});
+      var to=form.dataset.to;
+      var subject='[Retro Gaming Pros] '+$('fTopic').value+' from '+$('fName').value.trim();
+      var body=$('fMsg').value.trim()+'\n\n'+$('fName').value.trim()+'\n'+$('fEmail').value.trim();
+      $('contactDone').hidden=false;
+      window.location.href='mailto:'+to+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+    });
   }
+
+  // ---- systems marquee ----
+  var marquee=SYS.map(function(x){return x.n.toUpperCase();}).concat(['GAME GEAR','TURBOGRAFX-16','NEO GEO','ATARI 7800','PS2']);
+  var tr=$('systemsTrack');
+  if(tr)tr.innerHTML=marquee.concat(marquee).map(function(s){return '<span>'+s+'</span>';}).join('');
 })();

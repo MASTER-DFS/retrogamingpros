@@ -28,18 +28,18 @@ So the blink usually isn't a dead console. It's a console that can't hear the ca
 
 **Be careful with home connector tricks.** You'll find guides for boiling the 72-pin connector or bending the pins back by hand. These can buy some time, but results vary and it's easy to end up with uneven pins that grip some cartridges and not others.
 
-## How we fix it on the bench
+## The proper fix
 
-Our standard NES blink repair looks like this:
+A lasting NES blink repair looks like this:
 
 1. **Replace the 72-pin connector** with a new one, so every pin grips evenly.
-2. **Clean the cartridge slot and the board edge** where the connector seats.
+2. **Clean the board edge** where the connector seats.
 3. **Test with a stack of cartridges**, including a few known-difficult ones, through several cold starts.
 
-<div class="callout"><b>OPTIONAL</b>Some owners also ask us to disable the 10NES lockout chip. That's done by isolating one pin on the chip. It means the console stops checking cartridges altogether, which also lets it play games from other regions. It's fully reversible, and we'll talk it through with you first.</div>
+<div class="callout"><b>OPTIONAL</b>Some owners also disable the 10NES lockout chip. That's done by isolating one pin on the chip. The console then stops checking cartridges altogether, which also lets it play games from other regions. It's reversible if you ever want to undo it.</div>
 
 ## What about the top-loader?
 
-The later top-loading NES (model NES-101) doesn't have this problem nearly as often. It uses a direct card-edge slot instead of the push-down connector, and Nintendo removed the lockout chip from it. If you own one and it won't boot, the cause is usually somewhere else, so send it to us for a diagnosis.
+The later top-loading NES (model NES-101) doesn't have this problem nearly as often. It uses a direct card-edge slot instead of the push-down connector, and Nintendo removed the lockout chip from it. If you own one and it won't boot, the cause is usually somewhere else, like the power supply or a dirty cartridge.
 
-If your NES is blinking, clean your cartridges first. If it still blinks, a new connector will almost certainly sort it out, and diagnosis is always free.
+If your NES is blinking, clean your cartridges first. If it still blinks, a new connector will almost certainly sort it out. We repair NES consoles, so [get in touch](/#contact) if you'd rather have us do it.

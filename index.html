@@ -5,36 +5,34 @@ layout: default
     <canvas class="hero-fx" id="heroFx" aria-hidden="true"></canvas>
     <div class="wrap">
       <div class="hero-copy">
-        <span class="eyebrow">Repair · Restore · Mod · Resell</span>
-        <h1>Your childhood console, <em>back on the screen.</em></h1>
-        <p>We repair every system, from Atari and NES to PlayStation, Dreamcast and handhelds. Every console is diagnosed for free, fixed with quality parts, and play-tested before it goes home.</p>
+        <span class="eyebrow">Play · Preserve · Repair</span>
+        <h1>For everyone who still <em>presses start.</em></h1>
+        <p>Retro Gaming Pros is all about the consoles, handhelds and cartridges we grew up with. We write guides, history and hardware explainers, and we repair NES and Atari consoles when yours needs some help.</p>
         <div class="hero-ctas">
-          <a class="btn btn-primary" href="#contact">Book a repair</a>
-          <a class="btn btn-ghost" href="#shop">Shop tested consoles</a>
+          <a class="btn btn-primary" href="{{ '/blog/' | relative_url }}">Read the blog</a>
+          <a class="btn btn-ghost" href="#systems">Explore the systems</a>
         </div>
         <div class="trust">
-          <span>All systems supported</span>
-          <span>Free diagnosis</span>
-          <span>90-day warranty</span>
-          <span>Mail-in or drop-off</span>
+          <span>Guides &amp; history</span>
+          <span>Community first</span>
+          <span>NES &amp; Atari repairs</span>
         </div>
       </div>
 
-      <div class="crt-shell" aria-label="Quick repair estimate">
+      <div class="crt-shell" aria-label="Console spec explorer">
         <div class="crt" id="crt">
           <div class="crt-power">
           <div class="crt-inner">
-            <div class="crt-title">QUICK DIAGNOSIS</div>
+            <div class="crt-title">SYSTEM FILES</div>
             <div class="crt-row">
-              <label for="dxConsole">&gt; SYSTEM:</label>
-              <select id="dxConsole"></select>
+              <label for="sysPick">&gt; SYSTEM:</label>
+              <select id="sysPick"></select>
             </div>
-            <div class="crt-row">
-              <label for="dxSymptom">&gt; PROBLEM:</label>
-              <select id="dxSymptom"></select>
+            <div class="crt-out" id="sysOut" aria-live="polite"></div>
+            <div class="crt-nav">
+              <button type="button" id="sysPrev" aria-label="Previous system">◀ PREV</button>
+              <button type="button" id="sysNext" aria-label="Next system">NEXT ▶</button>
             </div>
-            <div class="crt-out" id="dxOut" aria-live="polite"></div>
-            <div style="margin-top:auto">PRESS START<span class="blink">_</span></div>
           </div>
           <div class="crt-boot" id="crtBoot" aria-hidden="true" hidden></div>
           </div>
@@ -48,191 +46,18 @@ layout: default
     </div>
   </section>
 
-  <div class="systems" aria-label="Systems we service">
+  <div class="systems" aria-label="Systems we love">
     <div class="systems-track" id="systemsTrack"></div>
   </div>
-
-  <section class="section" id="repairs">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow">Repairs &amp; upgrades</span>
-        <h2>Every system. Fixed right.</h2>
-        <p>If it plugs into a TV or runs on batteries, we work on it. Don't see yours listed? Ask us. Most repairs are done on the bench within a week. You approve the quote before any work starts, and you only pay if we fix it.</p>
-      </div>
-      <div class="services">
-        <article class="svc">
-          <canvas class="svc-icon" data-icon="power" width="11" height="11"></canvas>
-          <h3>Power &amp; boot repair</h3>
-          <p>Blinking red light, no picture, dead on arrival. We trace it to the part and replace it.</p>
-          <ul>
-            <li>NES 72-pin connector<b>$35</b></li>
-            <li>Power jack / regulator<b>$30</b></li>
-            <li>Full capacitor recap<b>from $45</b></li>
-          </ul>
-        </article>
-        <article class="svc">
-          <canvas class="svc-icon" data-icon="disc" width="11" height="11"></canvas>
-          <h3>Disc drive &amp; laser</h3>
-          <p>Skipping, not reading, or stuck on the logo. Lasers calibrated or swapped, drives cleaned and lubed.</p>
-          <ul>
-            <li>PS1 / PS2 laser swap<b>from $45</b></li>
-            <li>GameCube drive service<b>$40</b></li>
-            <li>Dreamcast GD-ROM<b>from $50</b></li>
-          </ul>
-        </article>
-        <article class="svc">
-          <canvas class="svc-icon" data-icon="pad" width="11" height="11"></canvas>
-          <h3>Controllers</h3>
-          <p>Loose joysticks, dead buttons, sticky D-pads and frayed cables brought back to factory feel.</p>
-          <ul>
-            <li>N64 joystick rebuild<b>$25</b></li>
-            <li>Button / membrane service<b>$15</b></li>
-            <li>Cable replacement<b>$20</b></li>
-          </ul>
-        </article>
-        <article class="svc">
-          <canvas class="svc-icon" data-icon="handheld" width="11" height="11"></canvas>
-          <h3>Handhelds</h3>
-          <p>Game Boy, GBA, Game Gear and DS. Screens, speakers, shells and the classic Game Gear recap.</p>
-          <ul>
-            <li>IPS backlit screen install<b>from $65</b></li>
-            <li>Game Gear recap<b>$55</b></li>
-            <li>New shell &amp; buttons<b>from $30</b></li>
-          </ul>
-        </article>
-        <article class="svc">
-          <canvas class="svc-icon" data-icon="hdmi" width="11" height="11"></canvas>
-          <h3>Video mods</h3>
-          <p>Sharper picture on modern TVs. RGB, component and HDMI mods installed cleanly, no hacked cases.</p>
-          <ul>
-            <li>SNES / Genesis RGB mod<b>from $50</b></li>
-            <li>N64 HDMI kit install<b>from $90</b></li>
-            <li>Atari 2600 composite<b>$40</b></li>
-          </ul>
-        </article>
-        <article class="svc">
-          <canvas class="svc-icon" data-icon="cart" width="11" height="11"></canvas>
-          <h3>Cartridges</h3>
-          <p>Games that won't save or won't boot. Save batteries replaced with sockets, pins cleaned, labels kept.</p>
-          <ul>
-            <li>Save battery (CR2025)<b>$12</b></li>
-            <li>Pin cleaning &amp; test<b>$5</b></li>
-            <li>Cart restoration<b>from $15</b></li>
-          </ul>
-        </article>
-      </div>
-      <p class="note">Prices shown are sample starting prices. Your exact quote comes after the free diagnosis.</p>
-    </div>
-  </section>
-
-  <section class="section process" id="how">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow">How it works</span>
-        <h2>From the bench back to your couch.</h2>
-      </div>
-      <ol class="steps">
-        <li><h3>Send it in</h3><p>Drop it off or mail it with the repair ticket. We email you when it arrives.</p></li>
-        <li><h3>Free diagnosis</h3><p>We open it up, test every board, and find the real fault.</p></li>
-        <li><h3>Approve the quote</h3><p>You get a clear price. Nothing is repaired until you say go.</p></li>
-        <li><h3>Repair &amp; burn-in</h3><p>Fixed, cleaned, and play-tested for at least an hour with real games.</p></li>
-        <li><h3>Back to you</h3><p>Packed safe, shipped insured, and covered for 90 days.</p></li>
-      </ol>
-    </div>
-  </section>
-
-  <section class="section" id="shop">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow">Shop</span>
-        <h2>Tested consoles, ready to play.</h2>
-        <p>Every system is cleaned inside and out, recapped where needed, and play-tested before it is listed. Each one comes with a 90-day warranty.</p>
-      </div>
-      <div class="shop-bar" role="group" aria-label="Filter consoles">
-        <button class="chip" data-filter="all" aria-pressed="true">All</button>
-        <button class="chip" data-filter="nintendo" aria-pressed="false">Nintendo</button>
-        <button class="chip" data-filter="sega" aria-pressed="false">Sega</button>
-        <button class="chip" data-filter="sony" aria-pressed="false">PlayStation</button>
-        <button class="chip" data-filter="handheld" aria-pressed="false">Handhelds</button>
-      </div>
-      <div class="products" id="products"></div>
-      <div class="sell">
-        <div>
-          <b>Got old consoles in a closet?</b>
-          <p>We buy and trade in retro systems, games and controllers, working or broken. Send us a photo for a quote.</p>
-        </div>
-        <a class="btn btn-ghost" href="#contact">Get a trade-in quote</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="section about" id="about">
-    <div class="wrap">
-      <div class="about-copy">
-        <span class="eyebrow">About the shop</span>
-        <h2 style="font-size:clamp(30px,4.4vw,46px)">Repaired by people who still play these games.</h2>
-        <p>We started fixing consoles for friends and never stopped. Today we restore hundreds of systems a year, from yellowed SNES shells to N64s that haven't powered on since 2001.</p>
-        <p>We use quality capacitors, real replacement parts and proper solder work. No glue, no shortcuts. If a console can't be saved, we tell you straight and don't charge for the look.</p>
-        <div><a class="btn btn-primary" href="#contact">Talk to a tech</a></div>
-      </div>
-      <div class="bench" aria-label="Shop stats">
-        <div class="bench-title">BENCH LOG</div>
-        <div class="row"><span class="k">Consoles repaired</span><span class="v">1,200+</span></div>
-        <div class="row"><span class="k">Average turnaround</span><span class="v">5–7 days</span></div>
-        <div class="row"><span class="k">Warranty</span><span class="v">90 days</span></div>
-        <div class="row"><span class="k">Burn-in test</span><span class="v">60 min min.</span></div>
-        <div class="row"><span class="k">Diagnosis</span><span class="v">Free</span></div>
-        <div class="row"><span class="k">Oldest system serviced</span><span class="v">Atari 2600 (1977)</span></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section community" id="community">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow">Community</span>
-        <h2>We play for the community, too.</h2>
-        <p>Retro gaming lives on because players, collectors and fixers look out for each other. We advocate for that community every day, not just at the repair bench.</p>
-      </div>
-      <div class="pillars">
-        <div class="pillar"><h3>Right to repair</h3><p>Your console is yours. We support your right to fix it, mod it and keep it running, and we're happy to explain what we did and why.</p></div>
-        <div class="pillar"><h3>Preservation</h3><p>Every repaired console is one less in a landfill. We save original parts, keep save files safe and treat rare hardware with care.</p></div>
-        <div class="pillar"><h3>Free advice</h3><p>Fixing it yourself? Send us a question. We'd rather help you succeed than sell you a repair you don't need.</p></div>
-        <div class="pillar"><h3>Fair for collectors</h3><p>Honest grading, honest prices and no scalping. We want new players to be able to start their collection.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" style="padding-top:0">
-    <div class="wrap">
-      <div class="reviews">
-        <figure class="review" style="margin:0">
-          <div class="stars" aria-label="5 stars">★★★★★</div>
-          <p>"My NES blinked for twenty years. One new connector and a cleaning later, it boots every single time."</p>
-          <cite>Sample review · NES repair</cite>
-        </figure>
-        <figure class="review" style="margin:0">
-          <div class="stars" aria-label="5 stars">★★★★★</div>
-          <p>"The IPS screen on my Game Boy looks unreal. Clean install, and they kept the original shell."</p>
-          <cite>Sample review · Game Boy mod</cite>
-        </figure>
-        <figure class="review" style="margin:0">
-          <div class="stars" aria-label="5 stars">★★★★★</div>
-          <p>"Bought a refurbished N64 for my kids. Tight joysticks, spotless inside. It plays like it's 1998."</p>
-          <cite>Sample review · Shop purchase</cite>
-        </figure>
-      </div>
-    </div>
-  </section>
 
   {% if site.posts.size > 0 %}
   <section class="section blog-teaser" id="blog">
     <div class="wrap">
       <div class="teaser-head">
         <div class="section-head">
-          <span class="eyebrow">From the blog</span>
-          <h2>Notes from the repair bench.</h2>
-          <p>How-tos, repair stories and straight answers about the hardware we all grew up with.</p>
+          <span class="eyebrow">Latest from the blog</span>
+          <h2>Guides, history and hardware.</h2>
+          <p>Straight answers about the consoles we all grew up with, from why they break to how to make them look great today.</p>
         </div>
         <a class="btn btn-ghost" href="{{ '/blog/' | relative_url }}">All posts</a>
       </div>
@@ -243,43 +68,131 @@ layout: default
   </section>
   {% endif %}
 
+  <section class="section timeline" id="systems">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">The systems</span>
+        <h2>A quarter century of consoles.</h2>
+        <p>From the Atari 2600 in 1977 to the GameCube in 2001, in order of their US release. Pick one to load its file on the TV up top.</p>
+      </div>
+      <div class="shop-bar" role="group" aria-label="Filter systems">
+        <button class="chip" type="button" data-filter="all" aria-pressed="true">All</button>
+        <button class="chip" type="button" data-filter="atari" aria-pressed="false">Atari</button>
+        <button class="chip" type="button" data-filter="nintendo" aria-pressed="false">Nintendo</button>
+        <button class="chip" type="button" data-filter="sega" aria-pressed="false">Sega</button>
+        <button class="chip" type="button" data-filter="sony" aria-pressed="false">Sony</button>
+        <button class="chip" type="button" data-filter="handheld" aria-pressed="false">Handhelds</button>
+      </div>
+      <ol class="tl-grid" id="timeline"></ol>
+    </div>
+  </section>
+
+  <section class="section repairs" id="repairs">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Repairs</span>
+        <h2>NES and Atari repairs.</h2>
+        <p>Right now we repair Nintendo Entertainment System and Atari consoles. Tell us what's going on and we'll get back to you about a fix. More systems are on the way.</p>
+      </div>
+      <div class="services two">
+        <article class="svc">
+          <canvas class="svc-icon" data-icon="nes" width="14" height="12"></canvas>
+          <h3>Nintendo (NES)</h3>
+          <p>The front-loading NES is the most-loved console we work on, and its common faults are very fixable.</p>
+          <ul>
+            <li>Blinking red light and grey screen</li>
+            <li>72-pin connector replacement</li>
+            <li>No power or no picture</li>
+            <li>Controller and controller port repair</li>
+            <li>Cartridge cleaning and testing</li>
+          </ul>
+          <button class="btn btn-ghost" type="button" data-topic="NES repair">Ask about an NES repair</button>
+        </article>
+        <article class="svc">
+          <canvas class="svc-icon" data-icon="atari" width="14" height="12"></canvas>
+          <h3>Atari</h3>
+          <p>Woodgrain and all. Atari hardware is simple and tough, which makes it a great candidate for a second life.</p>
+          <ul>
+            <li>Won't power on</li>
+            <li>No picture, snowy or rolling picture</li>
+            <li>Sticky or dead console switches</li>
+            <li>Joystick and controller port repair</li>
+            <li>Cartridge slot cleaning</li>
+          </ul>
+          <button class="btn btn-ghost" type="button" data-topic="Atari repair">Ask about an Atari repair</button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section community" id="community">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Community</span>
+        <h2>We play for the community.</h2>
+        <p>Retro gaming lives on because players, collectors and fixers look out for each other. We stand up for that community every day.</p>
+      </div>
+      <div class="pillars">
+        <div class="pillar"><h3>Right to repair</h3><p>Your console is yours. You should be able to open it, fix it, mod it and keep it running, and we'll help you learn how.</p></div>
+        <div class="pillar"><h3>Preservation</h3><p>These games and machines are history. Keeping them working, documented and playable matters.</p></div>
+        <div class="pillar"><h3>Free advice</h3><p>Stuck on a setup or a fix? Send us a question. Sharing what we know is the whole point.</p></div>
+        <div class="pillar"><h3>Fair for collectors</h3><p>We call out hype pricing and help new players start a collection without overpaying.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section about" id="about">
+    <div class="wrap">
+      <div class="about-copy">
+        <span class="eyebrow">About</span>
+        <h2 style="font-size:clamp(30px,4.4vw,46px)">Made by people who still play these games.</h2>
+        <p>Retro Gaming Pros is for anyone who still keeps a console hooked up to the TV, or wishes they did. We write about the hardware, the history and the games, and we fix NES and Atari consoles when they stop cooperating.</p>
+        <p>We think old games should stay playable, affordable and understood. That means sharing what we learn, supporting the right to repair, and being straight with you about what a fix really takes.</p>
+        <div><a class="btn btn-primary" href="#contact">Say hello</a></div>
+      </div>
+      <div class="bench" aria-label="What you'll find here">
+        <div class="bench-title">WHAT YOU'LL FIND HERE</div>
+        <div class="row"><span class="k">Hardware guides</span><span class="v">How it works</span></div>
+        <div class="row"><span class="k">Fix-it explainers</span><span class="v">Why it breaks</span></div>
+        <div class="row"><span class="k">Console history</span><span class="v">1977 to 2001</span></div>
+        <div class="row"><span class="k">Setup help</span><span class="v">Old games, new TVs</span></div>
+        <div class="row"><span class="k">Collecting tips</span><span class="v">Buy smart</span></div>
+        <div class="row"><span class="k">Repairs</span><span class="v">NES &amp; Atari</span></div>
+      </div>
+    </div>
+  </section>
+
   <section class="section contact" id="contact">
     <div class="wrap">
       <div class="contact-info">
         <span class="eyebrow">Contact</span>
-        <h2 style="font-size:clamp(30px,4.4vw,46px)">Start a repair ticket.</h2>
-        <p style="color:var(--muted);font-size:17px">Tell us what's wrong and we'll reply within one business day with next steps and shipping instructions.</p>
+        <h2 style="font-size:clamp(30px,4.4vw,46px)">Say hello.</h2>
+        <p style="color:var(--muted);font-size:17px">Suggest a blog post, ask a question about your hardware, or ask about an NES or Atari repair.</p>
         <dl class="info-list">
-          <div><dt>PHONE</dt><dd>(555) 010-8842</dd></div>
-          <div><dt>EMAIL</dt><dd>info@codebluepcrepair.com</dd></div>
-          <div><dt>SHOP</dt><dd>123 Arcade Lane, Your City, ST</dd></div>
-          <div><dt>HOURS</dt><dd>Tue–Sat · 10am–6pm</dd></div>
+          <div><dt>EMAIL</dt><dd>{{ site.email }}</dd></div>
+          <div><dt>REPAIRS</dt><dd>NES and Atari consoles</dd></div>
         </dl>
       </div>
-      <form class="ticket" id="ticketForm" novalidate>
-        <h3>Repair request</h3>
+      <form class="ticket" id="contactForm" data-to="{{ site.email }}" novalidate>
+        <h3>Send us a message</h3>
         <div class="form-grid">
           <div class="field"><label for="fName">Name</label><input id="fName" name="name" autocomplete="name" required></div>
           <div class="field"><label for="fEmail">Email</label><input id="fEmail" name="email" type="email" autocomplete="email" required></div>
-          <div class="field"><label for="fConsole">Console</label><select id="fConsole" name="console" required></select></div>
-          <div class="field"><label for="fService">Service</label>
-            <select id="fService" name="service">
-              <option>Repair</option><option>Mod / upgrade</option><option>Restoration</option><option>Sell or trade in</option>
+          <div class="field full"><label for="fTopic">What's it about?</label>
+            <select id="fTopic" name="topic">
+              <option>A question</option>
+              <option>A blog post idea</option>
+              <option>NES repair</option>
+              <option>Atari repair</option>
+              <option>Something else</option>
             </select>
           </div>
-          <div class="field full"><label for="fIssue">What's going on?</label><textarea id="fIssue" name="issue" placeholder="e.g. Powers on but the screen is black. Red light stays on."></textarea></div>
-          <div class="field full">
-            <label>How will you get it to us?</label>
-            <div class="radio-row">
-              <label><input type="radio" name="dropoff" id="fMail" value="mail" checked> Mail-in</label>
-              <label><input type="radio" name="dropoff" id="fDrop" value="drop"> Drop-off</label>
-            </div>
-          </div>
+          <div class="field full"><label for="fMsg">Message</label><textarea id="fMsg" name="message" placeholder="e.g. My NES blinks with every game. Can you take a look?"></textarea></div>
         </div>
-        <button class="btn btn-primary" type="submit" style="justify-self:start">Submit ticket</button>
-        <div class="done" id="ticketDone" hidden>
-          <b id="ticketNo"></b>
-          <span>This is a preview, so the form isn't connected yet. On the live site this will be sent to info@codebluepcrepair.com.</span>
+        <button class="btn btn-primary" type="submit" style="justify-self:start">Send message</button>
+        <div class="done" id="contactDone" hidden>
+          <b>READY TO SEND</b>
+          <span>Your email app should open with the message filled in. If it doesn't, email us at <span class="sel">{{ site.email }}</span>.</span>
         </div>
       </form>
     </div>
