@@ -1,0 +1,19 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+{% if page.title %}{% assign page_title = page.title | append: " · " | append: site.title %}{% else %}{% assign page_title = site.title | append: " · Retro Gaming Guides, History & Repairs" %}{% endif %}
+{% assign page_desc = page.description | default: site.description %}
+<title>{{ page_title }}</title>
+<meta name="description" content="{{ page_desc | strip_html | strip_newlines | escape }}">
+<link rel="canonical" href="{{ page.url | absolute_url }}">
+<meta property="og:site_name" content="{{ site.title }}">
+<meta property="og:title" content="{{ page_title | escape }}">
+<meta property="og:description" content="{{ page_desc | strip_html | strip_newlines | escape }}">
+<meta property="og:url" content="{{ page.url | absolute_url }}">
+<meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
+<meta name="theme-color" content="#13112a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' shape-rendering='crispEdges'%3E%3Crect x='1' y='1' width='10' height='10' fill='%23ef4a3c'/%3E%3Crect x='2' y='2' width='8' height='7' fill='%23efeaf8'/%3E%3Crect x='3' y='3' width='6' height='5' fill='%230b0a18'/%3E%3Crect x='4' y='4' width='4' height='3' fill='%23ffb238'/%3E%3Crect x='5' y='5' width='2' height='1' fill='%230b0a18'/%3E%3C/svg%3E">
+{% feed_meta %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=VT323&display=swap">
+<link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}?v={{ site.time | date: '%s' }}">

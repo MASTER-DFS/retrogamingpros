@@ -1,285 +1,42 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Retro Gaming Pros</title>
-<meta name="description" content="Retro console repair, restoration, mods and tested consoles for sale. NES, SNES, N64, Genesis, Game Boy, PlayStation and more.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=VT323&display=swap">
-<style>
-/* Layout: a repair bench at night. CRT hero with a live "diagnose" screen, then services as a parts board, shop as a shelf of tested hardware, and a repair ticket form. Single dark look, by choice. */
-:root{
-  --bg:#13112a;          /* back-room navy */
-  --panel:#1c1a3a;       /* bench mat */
-  --panel-2:#252249;
-  --line:#3a3670;
-  --fg:#efeaf8;          /* warm white plastic */
-  --muted:#a9a3c9;
-  --amber:#ffb238;       /* CRT phosphor amber */
-  --red:#ef4a3c;         /* cartridge label red */
-  --teal:#4fd1c5;        /* solder mask hint, used sparingly */
-  --screen:#0b0a18;
-  --f-pixel:"Press Start 2P", ui-monospace, monospace;
-  --f-display:"Chakra Petch", "Trebuchet MS", sans-serif;
-  --f-body:"IBM Plex Sans", system-ui, sans-serif;
-  --f-crt:"VT323", ui-monospace, monospace;
-  --radius:6px;
-  --wrap:1160px;
-  color-scheme:dark;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--fg);font:400 16px/1.6 var(--f-body);-webkit-font-smoothing:antialiased}
-a{color:var(--amber)}
-:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
-h1,h2,h3{font-family:var(--f-display);line-height:1.1;text-wrap:balance;margin:0}
-p{margin:0}
-.wrap{max-width:var(--wrap);margin:0 auto;padding-inline:20px}
-.eyebrow{font-family:var(--f-pixel);font-size:10px;letter-spacing:.12em;color:var(--amber);text-transform:uppercase}
-.section{padding-block:88px}
-.section-head{display:grid;gap:14px;max-width:640px;margin-bottom:40px}
-.section-head h2{font-size:clamp(30px,4.4vw,46px);font-weight:700}
-.section-head p{color:var(--muted);font-size:17px}
-
-/* buttons */
-.btn{display:inline-flex;align-items:center;gap:10px;font:600 15px/1 var(--f-display);letter-spacing:.04em;text-transform:uppercase;text-decoration:none;padding:14px 20px;border-radius:var(--radius);border:2px solid var(--amber);cursor:pointer;transition:transform .12s, box-shadow .12s}
-.btn-primary{background:var(--amber);color:var(--screen);box-shadow:4px 4px 0 var(--red)}
-.btn-primary:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--red)}
-.btn-primary:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--red)}
-.btn-ghost{background:transparent;color:var(--amber)}
-.btn-ghost:hover{background:rgba(255,178,56,.1)}
-
-/* header */
-.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(19,17,42,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
-.logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--fg)}
-.logo-mark{width:38px;height:38px;flex:none}
-.logo-text{display:grid;line-height:1.15}
-.logo-text b{font:400 11px/1.4 var(--f-pixel);color:var(--fg)}
-.logo-text span{font:500 12px/1 var(--f-display);color:var(--muted);letter-spacing:.14em;text-transform:uppercase}
-nav ul{display:flex;gap:4px;list-style:none;margin:0;padding:0}
-nav a{display:block;padding:8px 12px;border-radius:4px;color:var(--fg);text-decoration:none;font:600 14px/1 var(--f-display);letter-spacing:.06em;text-transform:uppercase}
-nav a:hover{color:var(--amber);background:var(--panel)}
-.menu-btn{display:none;background:none;border:2px solid var(--line);color:var(--fg);border-radius:4px;padding:8px 10px;font:400 10px var(--f-pixel);cursor:pointer}
-@media (max-width:860px){
-  .menu-btn{display:block}
-  nav{position:absolute;left:0;right:0;top:100%;background:var(--bg);border-bottom:1px solid var(--line)}
-  nav[data-open="false"]{display:none}
-  nav ul{flex-direction:column;padding:8px 16px 16px}
-  nav a{padding:14px 8px}
-  .top .btn{display:none}
-}
-
-/* hero */
-.hero{padding-block:64px 80px;position:relative;overflow:hidden}
-.hero::before{content:"";position:absolute;inset:0;background:
-  radial-gradient(600px 300px at 85% 10%, rgba(239,74,60,.16), transparent 70%),
-  radial-gradient(700px 400px at 10% 90%, rgba(255,178,56,.10), transparent 70%);pointer-events:none}
-.hero .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center;position:relative}
-.hero-copy{display:grid;gap:22px;min-width:0}
-.hero h1{font-size:clamp(40px,6.2vw,74px);font-weight:700;letter-spacing:-.01em}
-.hero h1 em{font-style:normal;color:var(--amber);display:block}
-.hero-copy > p{font-size:19px;color:var(--muted);max-width:52ch}
-.hero-ctas{display:flex;flex-wrap:wrap;gap:14px}
-.trust{display:flex;flex-wrap:wrap;gap:10px 22px;font:500 14px var(--f-display);color:var(--muted);letter-spacing:.04em}
-.trust span::before{content:"■ ";color:var(--teal)}
-
-/* CRT */
-.crt-shell{background:linear-gradient(#cfc8b8,#b3ab98);border-radius:22px;padding:22px 22px 18px;box-shadow:0 30px 60px rgba(0,0,0,.45), inset 0 2px 0 rgba(255,255,255,.5);min-width:0}
-.crt{position:relative;background:var(--screen);border-radius:28px/22px;aspect-ratio:4/3;max-width:100%;overflow:hidden;box-shadow:inset 0 0 50px rgba(0,0,0,.9), inset 0 0 6px rgba(255,178,56,.3)}
-.crt::after{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg, rgba(0,0,0,.28) 0 2px, transparent 2px 4px);mix-blend-mode:multiply}
-.crt::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,.55));z-index:2}
-.crt-inner{position:absolute;inset:0;padding:6% 7%;display:flex;flex-direction:column;gap:10px;font:400 clamp(17px,1.75vw,21px)/1.1 var(--f-crt);color:var(--amber);text-shadow:0 0 6px rgba(255,178,56,.7)}
-.crt-title{font-family:var(--f-pixel);font-size:clamp(9px,1.1vw,12px);line-height:1.6;color:var(--red);text-shadow:0 0 6px rgba(239,74,60,.7)}
-.crt label{font-size:inherit}
-.crt select{appearance:none;background:transparent;border:1px dashed rgba(255,178,56,.6);color:var(--amber);font:inherit;padding:2px 8px;border-radius:2px;max-width:100%;cursor:pointer}
-.crt select option{background:var(--screen)}
-.crt-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-.crt-out{display:grid;gap:4px;margin-top:4px}
-.crt-out .dim{opacity:.7}
-.crt-out .price{color:var(--fg);text-shadow:0 0 6px rgba(239,234,248,.6)}
-.blink{animation:blink 1s steps(1) infinite}
-@keyframes blink{50%{opacity:0}}
-.crt-base{display:flex;justify-content:space-between;align-items:center;padding:12px 6px 0}
-.crt-base .brand{font:700 12px var(--f-display);letter-spacing:.3em;color:#6b6455}
-.knobs{display:flex;gap:10px}
-.knobs i{width:16px;height:16px;border-radius:50%;background:#8a8270;box-shadow:inset 0 -2px 0 rgba(0,0,0,.3)}
-.led{width:8px;height:8px;border-radius:50%;background:var(--red);box-shadow:0 0 8px var(--red)}
-@media (max-width:900px){.hero .wrap{grid-template-columns:1fr;gap:40px}}
-@media (max-width:560px){.crt{aspect-ratio:auto;min-height:300px}.crt-inner{position:relative;min-height:300px}}
-
-/* marquee of consoles */
-.systems{border-block:1px solid var(--line);background:var(--panel);overflow:hidden}
-.systems-track{display:flex;gap:40px;padding-block:16px;width:max-content;animation:scroll 40s linear infinite;font:400 11px var(--f-pixel);color:var(--muted);letter-spacing:.08em}
-.systems-track span{white-space:nowrap}
-.systems-track span::after{content:"✚";margin-left:40px;color:var(--red)}
-@keyframes scroll{to{transform:translateX(-50%)}}
-
-/* services */
-.services{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
-.svc{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:26px;display:grid;grid-template-rows:auto auto 1fr auto;gap:12px;min-width:0}
-.svc-icon{width:44px;height:44px}
-.svc h3{font-size:22px;font-weight:700}
-.svc p{color:var(--muted);font-size:15px}
-.svc ul{list-style:none;margin:0;padding:0;display:grid;gap:6px;font-size:14px}
-.svc li{display:flex;justify-content:space-between;gap:12px;border-top:1px dashed var(--line);padding-top:6px}
-.svc li b{font:400 20px/1 var(--f-crt);color:var(--amber);white-space:nowrap;font-variant-numeric:tabular-nums}
-@media (max-width:960px){.services{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:620px){.services{grid-template-columns:1fr}}
-.note{margin-top:22px;font-size:14px;color:var(--muted)}
-
-/* process */
-.process{background:var(--panel);border-block:1px solid var(--line)}
-.steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px;list-style:none;margin:0;padding:0;counter-reset:step}
-.steps li{counter-increment:step;display:grid;gap:8px;align-content:start;padding-top:18px;border-top:3px solid var(--line);min-width:0}
-.steps li:first-child{border-top-color:var(--amber)}
-.steps li::before{content:"STAGE " counter(step);font:400 10px var(--f-pixel);color:var(--amber);letter-spacing:.08em}
-.steps h3{font-size:19px}
-.steps p{color:var(--muted);font-size:14px}
-@media (max-width:900px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:520px){.steps{grid-template-columns:1fr}}
-
-/* shop */
-.shop-bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
-.chip{background:transparent;border:1px solid var(--line);color:var(--fg);border-radius:999px;padding:8px 14px;font:600 13px var(--f-display);letter-spacing:.06em;text-transform:uppercase;cursor:pointer}
-.chip[aria-pressed="true"]{background:var(--amber);border-color:var(--amber);color:var(--screen)}
-.products{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
-.product{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:grid;grid-template-rows:auto 1fr;min-width:0}
-.product-art{aspect-ratio:4/3;max-width:100%;display:grid;place-items:center;background:var(--panel-2);position:relative}
-.product-art canvas{width:62%;height:auto;image-rendering:pixelated}
-.grade{position:absolute;top:10px;left:10px;font:400 9px var(--f-pixel);padding:6px 7px;border-radius:3px;background:var(--screen);color:var(--teal);border:1px solid var(--teal)}
-.product-body{padding:16px 18px 18px;display:grid;gap:8px;align-content:start}
-.product h3{font-size:18px}
-.product .meta{font-size:13px;color:var(--muted)}
-.product-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:6px}
-.product .price{font:400 28px/1 var(--f-crt);color:var(--amber);font-variant-numeric:tabular-nums}
-.product button{background:transparent;border:1px solid var(--amber);color:var(--amber);font:600 12px var(--f-display);letter-spacing:.08em;text-transform:uppercase;padding:8px 12px;border-radius:4px;cursor:pointer}
-.product button:hover{background:var(--amber);color:var(--screen)}
-@media (max-width:1040px){.products{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media (max-width:760px){.products{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:440px){.products{grid-template-columns:1fr}}
-.sell{margin-top:28px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;padding:22px 24px;border:2px dashed var(--line);border-radius:var(--radius)}
-.sell p{color:var(--muted);max-width:60ch}
-.sell b{color:var(--fg);font-family:var(--f-display);font-size:20px;display:block;margin-bottom:4px}
-
-/* about */
-.about .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
-.about-copy{display:grid;gap:18px;min-width:0}
-.about-copy p{color:var(--muted);font-size:17px;max-width:60ch}
-.bench{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:24px;display:grid;gap:4px;font:400 21px/1.35 var(--f-crt);color:var(--fg);min-width:0}
-.bench .k{color:var(--muted)}
-.bench .row{display:flex;justify-content:space-between;gap:16px;border-bottom:1px dashed var(--line);padding-block:6px}
-.bench .row:last-child{border-bottom:0}
-.bench .v{color:var(--amber);text-align:right}
-.bench-title{font:400 10px var(--f-pixel);color:var(--red);margin-bottom:8px;letter-spacing:.08em}
-@media (max-width:860px){.about .wrap{grid-template-columns:1fr;gap:32px}}
-
-.pillars{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
-.pillar{border-top:3px solid var(--teal);padding-top:16px;display:grid;gap:8px;align-content:start;min-width:0}
-.pillar h3{font-size:20px}
-.pillar p{color:var(--muted);font-size:15px}
-@media (max-width:900px){.pillars{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:520px){.pillars{grid-template-columns:1fr}}
-
-/* reviews */
-.reviews{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
-.review{border-left:3px solid var(--red);padding:4px 0 4px 20px;display:grid;gap:10px;min-width:0}
-.review p{font-size:16px}
-.review cite{font:normal 600 13px var(--f-display);color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
-.stars{color:var(--amber);font-size:14px;letter-spacing:3px}
-@media (max-width:860px){.reviews{grid-template-columns:1fr}}
-
-/* contact */
-.contact{background:var(--panel);border-top:1px solid var(--line)}
-.contact .wrap{display:grid;grid-template-columns:1fr 1.25fr;gap:56px}
-.contact-info{display:grid;gap:22px;align-content:start;min-width:0}
-.info-list{display:grid;gap:14px}
-.info-list div{display:grid;gap:2px}
-.info-list dt{font:400 9px var(--f-pixel);color:var(--amber);letter-spacing:.1em}
-.info-list dd{margin:0;font-size:17px;user-select:all}
-.ticket{background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);padding:28px;display:grid;gap:16px;position:relative;min-width:0}
-.ticket::before{content:"";position:absolute;left:0;right:0;top:0;height:6px;background:repeating-linear-gradient(90deg,var(--red) 0 14px,var(--amber) 14px 28px);border-radius:var(--radius) var(--radius) 0 0}
-.ticket h3{font-size:24px}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.field{display:grid;gap:6px;min-width:0}
-.field.full{grid-column:1/-1}
-.field label{font:600 13px var(--f-display);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-.field input,.field select,.field textarea{width:100%;background:var(--panel);border:1px solid var(--line);border-radius:4px;color:var(--fg);font:400 16px var(--f-body);padding:11px 12px}
-.field textarea{min-height:110px;resize:vertical}
-.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--amber);box-shadow:0 0 0 3px rgba(255,178,56,.2)}
-.radio-row{display:flex;flex-wrap:wrap;gap:10px}
-.radio-row label{display:flex;gap:8px;align-items:center;text-transform:none;letter-spacing:0;font:500 15px var(--f-body);color:var(--fg);border:1px solid var(--line);border-radius:4px;padding:9px 12px;cursor:pointer}
-.radio-row input{accent-color:var(--amber);width:auto}
-.done{border:1px solid var(--teal);background:rgba(79,209,197,.08);border-radius:4px;padding:16px;display:grid;gap:6px}
-.done b{font:400 22px var(--f-crt);color:var(--teal)}
-@media (max-width:900px){.contact .wrap{grid-template-columns:1fr;gap:40px}}
-@media (max-width:520px){.form-grid{grid-template-columns:1fr}}
-
-footer{border-top:1px solid var(--line);padding-block:32px}
-footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;color:var(--muted);font-size:14px}
-footer .domains{font:400 18px var(--f-crt)}
-
-@media (prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  .blink,.systems-track{animation:none}
-  .btn{transition:none}
-}
-</style>
-</head><body>
-
-<header class="top">
-  <div class="wrap">
-    <a class="logo" href="#home" aria-label="Retro Gaming Pros home">
-      <canvas class="logo-mark" id="logoMark" width="12" height="12" style="image-rendering:pixelated"></canvas>
-      <span class="logo-text"><b>RETRO GAMING</b><span>Pros · Repair &amp; Shop</span></span>
-    </a>
-    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="siteNav">MENU</button>
-    <nav id="siteNav" data-open="false">
-      <ul>
-        <li><a href="#repairs">Repairs</a></li>
-        <li><a href="#how">How it works</a></li>
-        <li><a href="#shop">Shop</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#community">Community</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-    <a class="btn btn-primary" href="#contact">Start a repair</a>
-  </div>
-</header>
-
-<main id="home">
+---
+layout: default
+---
   <section class="hero">
+    <canvas class="hero-fx" id="heroFx" aria-hidden="true"></canvas>
     <div class="wrap">
       <div class="hero-copy">
-        <span class="eyebrow">Repair · Restore · Mod · Resell</span>
-        <h1>Your childhood console, <em>back on the screen.</em></h1>
-        <p>We repair every system, from Atari and NES to PlayStation, Dreamcast and handhelds. Every console is diagnosed for free, fixed with quality parts, and play-tested before it goes home.</p>
+        <span class="eyebrow">Play · Preserve · Repair</span>
+        <h1>For everyone who still <em>presses start.</em></h1>
+        <p>Retro Gaming Pros is all about the consoles, handhelds and cartridges we grew up with. We write guides, history and hardware explainers, and we repair NES and Atari consoles when yours needs some help.</p>
         <div class="hero-ctas">
-          <a class="btn btn-primary" href="#contact">Book a repair</a>
-          <a class="btn btn-ghost" href="#shop">Shop tested consoles</a>
+          <a class="btn btn-primary" href="{{ '/blog/' | relative_url }}">Read the blog</a>
+          <a class="btn btn-ghost" href="#systems">Explore the systems</a>
         </div>
         <div class="trust">
-          <span>All systems supported</span>
-          <span>Free diagnosis</span>
-          <span>90-day warranty</span>
-          <span>Mail-in or drop-off</span>
+          <span>Guides &amp; history</span>
+          <span>Community first</span>
+          <span>NES &amp; Atari repairs</span>
         </div>
       </div>
 
-      <div class="crt-shell" aria-label="Quick repair estimate">
-        <div class="crt">
+      <div class="crt-shell" aria-label="Console spec explorer">
+        <div class="crt" id="crt">
+          <div class="crt-power">
           <div class="crt-inner">
-            <div class="crt-title">QUICK DIAGNOSIS</div>
+            <div class="crt-title">SYSTEM FILES</div>
             <div class="crt-row">
-              <label for="dxConsole">&gt; SYSTEM:</label>
-              <select id="dxConsole"></select>
+              <label for="sysPick">&gt; SYSTEM:</label>
+              <select id="sysPick"></select>
             </div>
-            <div class="crt-row">
-              <label for="dxSymptom">&gt; PROBLEM:</label>
-              <select id="dxSymptom"></select>
+            <div class="crt-out" id="sysOut" aria-live="polite"></div>
+            <div class="crt-nav">
+              <button type="button" id="sysPrev" aria-label="Previous system">◀ PREV</button>
+              <button type="button" id="sysNext" aria-label="Next system">NEXT ▶</button>
             </div>
-            <div class="crt-out" id="dxOut" aria-live="polite"></div>
-            <div style="margin-top:auto">PRESS START<span class="blink">_</span></div>
           </div>
+          <div class="crt-boot" id="crtBoot" aria-hidden="true" hidden></div>
+          </div>
+          <span class="crt-roll" aria-hidden="true"></span>
         </div>
         <div class="crt-base">
           <span class="brand">RGP-13</span>
@@ -289,141 +46,81 @@ footer .domains{font:400 18px var(--f-crt)}
     </div>
   </section>
 
-  <div class="systems" aria-label="Systems we service">
+  <div class="systems" aria-label="Systems we love">
     <div class="systems-track" id="systemsTrack"></div>
   </div>
 
-  <section class="section" id="repairs">
+  {% if site.posts.size > 0 %}
+  <section class="section blog-teaser" id="blog">
     <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow">Repairs &amp; upgrades</span>
-        <h2>Every system. Fixed right.</h2>
-        <p>If it plugs into a TV or runs on batteries, we work on it. Don't see yours listed? Ask us. Most repairs are done on the bench within a week. You approve the quote before any work starts, and you only pay if we fix it.</p>
-      </div>
-      <div class="services">
-        <article class="svc">
-          <canvas class="svc-icon" data-icon="power" width="11" height="11"></canvas>
-          <h3>Power &amp; boot repair</h3>
-          <p>Blinking red light, no picture, dead on arrival. We trace it to the part and replace it.</p>
-          <ul>
-            <li>NES 72-pin connector<b>$35</b></li>
-            <li>Power jack / regulator<b>$30</b></li>
-            <li>Full capacitor recap<b>from $45</b></li>
-          </ul>
-        </article>
-        <article class="svc">
-          <canvas class="svc-icon" data-icon="disc" width="11" height="11"></canvas>
-          <h3>Disc drive &amp; laser</h3>
-          <p>Skipping, not reading, or stuck on the logo. Lasers calibrated or swapped, drives cleaned and lubed.</p>
-          <ul>
-            <li>PS1 / PS2 laser swap<b>from $45</b></li>
-            <li>GameCube drive service<b>$40</b></li>
-            <li>Dreamcast GD-ROM<b>from $50</b></li>
-          </ul>
-        </article>
-        <article class="svc">
-          <canvas class="svc-icon" data-icon="pad" width="11" height="11"></canvas>
-          <h3>Controllers</h3>
-          <p>Loose joysticks, dead buttons, sticky D-pads and frayed cables brought back to factory feel.</p>
-          <ul>
-            <li>N64 joystick rebuild<b>$25</b></li>
-            <li>Button / membrane service<b>$15</b></li>
-            <li>Cable replacement<b>$20</b></li>
-          </ul>
-        </article>
-        <article class="svc">
-          <canvas class="svc-icon" data-icon="handheld" width="11" height="11"></canvas>
-          <h3>Handhelds</h3>
-          <p>Game Boy, GBA, Game Gear and DS. Screens, speakers, shells and the classic Game Gear recap.</p>
-          <ul>
-            <li>IPS backlit screen install<b>from $65</b></li>
-            <li>Game Gear recap<b>$55</b></li>
-            <li>New shell &amp; buttons<b>from $30</b></li>
-          </ul>
-        </article>
-        <article class="svc">
-          <canvas class="svc-icon" data-icon="hdmi" width="11" height="11"></canvas>
-          <h3>Video mods</h3>
-          <p>Sharper picture on modern TVs. RGB, component and HDMI mods installed cleanly, no hacked cases.</p>
-          <ul>
-            <li>SNES / Genesis RGB mod<b>from $50</b></li>
-            <li>N64 HDMI kit install<b>from $90</b></li>
-            <li>Atari 2600 composite<b>$40</b></li>
-          </ul>
-        </article>
-        <article class="svc">
-          <canvas class="svc-icon" data-icon="cart" width="11" height="11"></canvas>
-          <h3>Cartridges</h3>
-          <p>Games that won't save or won't boot. Save batteries replaced with sockets, pins cleaned, labels kept.</p>
-          <ul>
-            <li>Save battery (CR2032)<b>$12</b></li>
-            <li>Pin cleaning &amp; test<b>$5</b></li>
-            <li>Cart restoration<b>from $15</b></li>
-          </ul>
-        </article>
-      </div>
-      <p class="note">Prices shown are sample starting prices. Your exact quote comes after the free diagnosis.</p>
-    </div>
-  </section>
-
-  <section class="section process" id="how">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow">How it works</span>
-        <h2>From the bench back to your couch.</h2>
-      </div>
-      <ol class="steps">
-        <li><h3>Send it in</h3><p>Drop it off or mail it with the repair ticket. We email you when it arrives.</p></li>
-        <li><h3>Free diagnosis</h3><p>We open it up, test every board, and find the real fault.</p></li>
-        <li><h3>Approve the quote</h3><p>You get a clear price. Nothing is repaired until you say go.</p></li>
-        <li><h3>Repair &amp; burn-in</h3><p>Fixed, cleaned, and play-tested for at least an hour with real games.</p></li>
-        <li><h3>Back to you</h3><p>Packed safe, shipped insured, and covered for 90 days.</p></li>
-      </ol>
-    </div>
-  </section>
-
-  <section class="section" id="shop">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow">Shop</span>
-        <h2>Tested consoles, ready to play.</h2>
-        <p>Every system is cleaned inside and out, recapped where needed, and play-tested before it is listed. Each one comes with a 90-day warranty.</p>
-      </div>
-      <div class="shop-bar" role="group" aria-label="Filter consoles">
-        <button class="chip" data-filter="all" aria-pressed="true">All</button>
-        <button class="chip" data-filter="nintendo" aria-pressed="false">Nintendo</button>
-        <button class="chip" data-filter="sega" aria-pressed="false">Sega</button>
-        <button class="chip" data-filter="sony" aria-pressed="false">PlayStation</button>
-        <button class="chip" data-filter="handheld" aria-pressed="false">Handhelds</button>
-      </div>
-      <div class="products" id="products"></div>
-      <div class="sell">
-        <div>
-          <b>Got old consoles in a closet?</b>
-          <p>We buy and trade in retro systems, games and controllers, working or broken. Send us a photo for a quote.</p>
+      <div class="teaser-head">
+        <div class="section-head">
+          <span class="eyebrow">Latest from the blog</span>
+          <h2>Guides, history and hardware.</h2>
+          <p>Straight answers about the consoles we all grew up with, from why they break to how to make them look great today.</p>
         </div>
-        <a class="btn btn-ghost" href="#contact">Get a trade-in quote</a>
+        <a class="btn btn-ghost" href="{{ '/blog/' | relative_url }}">All posts</a>
+      </div>
+      <div class="post-grid">
+        {% for post in site.posts limit:3 %}{% include post-card.html post=post %}{% endfor %}
       </div>
     </div>
   </section>
+  {% endif %}
 
-  <section class="section about" id="about">
+  <section class="section timeline" id="systems">
     <div class="wrap">
-      <div class="about-copy">
-        <span class="eyebrow">About the shop</span>
-        <h2 style="font-size:clamp(30px,4.4vw,46px)">Repaired by people who still play these games.</h2>
-        <p>We started fixing consoles for friends and never stopped. Today we restore hundreds of systems a year, from yellowed SNES shells to N64s that haven't powered on since 2001.</p>
-        <p>We use quality capacitors, real replacement parts and proper solder work. No glue, no shortcuts. If a console can't be saved, we tell you straight and don't charge for the look.</p>
-        <div><a class="btn btn-primary" href="#contact">Talk to a tech</a></div>
+      <div class="section-head">
+        <span class="eyebrow">The systems</span>
+        <h2>A quarter century of consoles.</h2>
+        <p>From the Atari 2600 in 1977 to the GameCube in 2001, in order of their US release. Pick one to load its file on the TV up top.</p>
       </div>
-      <div class="bench" aria-label="Shop stats">
-        <div class="bench-title">BENCH LOG</div>
-        <div class="row"><span class="k">Consoles repaired</span><span class="v">1,200+</span></div>
-        <div class="row"><span class="k">Average turnaround</span><span class="v">5–7 days</span></div>
-        <div class="row"><span class="k">Warranty</span><span class="v">90 days</span></div>
-        <div class="row"><span class="k">Burn-in test</span><span class="v">60 min min.</span></div>
-        <div class="row"><span class="k">Diagnosis</span><span class="v">Free</span></div>
-        <div class="row"><span class="k">Oldest system serviced</span><span class="v">Atari 2600 (1977)</span></div>
+      <div class="shop-bar" role="group" aria-label="Filter systems">
+        <button class="chip" type="button" data-filter="all" aria-pressed="true">All</button>
+        <button class="chip" type="button" data-filter="atari" aria-pressed="false">Atari</button>
+        <button class="chip" type="button" data-filter="nintendo" aria-pressed="false">Nintendo</button>
+        <button class="chip" type="button" data-filter="sega" aria-pressed="false">Sega</button>
+        <button class="chip" type="button" data-filter="sony" aria-pressed="false">Sony</button>
+        <button class="chip" type="button" data-filter="handheld" aria-pressed="false">Handhelds</button>
+      </div>
+      <ol class="tl-grid" id="timeline"></ol>
+    </div>
+  </section>
+
+  <section class="section repairs" id="repairs">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Repairs</span>
+        <h2>NES and Atari repairs.</h2>
+        <p>Right now we repair Nintendo Entertainment System and Atari consoles. Tell us what's going on and we'll get back to you about a fix. More systems are on the way.</p>
+      </div>
+      <div class="services two">
+        <article class="svc">
+          <canvas class="svc-icon" data-icon="nes" width="14" height="12"></canvas>
+          <h3>Nintendo (NES)</h3>
+          <p>The front-loading NES is the most-loved console we work on, and its common faults are very fixable.</p>
+          <ul>
+            <li>Blinking red light and grey screen</li>
+            <li>72-pin connector replacement</li>
+            <li>No power or no picture</li>
+            <li>Controller and controller port repair</li>
+            <li>Cartridge cleaning and testing</li>
+          </ul>
+          <button class="btn btn-ghost" type="button" data-topic="NES repair">Ask about an NES repair</button>
+        </article>
+        <article class="svc">
+          <canvas class="svc-icon" data-icon="atari" width="14" height="12"></canvas>
+          <h3>Atari</h3>
+          <p>Woodgrain and all. Atari hardware is simple and tough, which makes it a great candidate for a second life.</p>
+          <ul>
+            <li>Won't power on</li>
+            <li>No picture, snowy or rolling picture</li>
+            <li>Sticky or dead console switches</li>
+            <li>Joystick and controller port repair</li>
+            <li>Cartridge slot cleaning</li>
+          </ul>
+          <button class="btn btn-ghost" type="button" data-topic="Atari repair">Ask about an Atari repair</button>
+        </article>
       </div>
     </div>
   </section>
@@ -432,36 +129,35 @@ footer .domains{font:400 18px var(--f-crt)}
     <div class="wrap">
       <div class="section-head">
         <span class="eyebrow">Community</span>
-        <h2>We play for the community, too.</h2>
-        <p>Retro gaming lives on because players, collectors and fixers look out for each other. We advocate for that community every day, not just at the repair bench.</p>
+        <h2>We play for the community.</h2>
+        <p>Retro gaming lives on because players, collectors and fixers look out for each other. We stand up for that community every day.</p>
       </div>
       <div class="pillars">
-        <div class="pillar"><h3>Right to repair</h3><p>Your console is yours. We support your right to fix it, mod it and keep it running, and we're happy to explain what we did and why.</p></div>
-        <div class="pillar"><h3>Preservation</h3><p>Every repaired console is one less in a landfill. We save original parts, keep save files safe and treat rare hardware with care.</p></div>
-        <div class="pillar"><h3>Free advice</h3><p>Fixing it yourself? Send us a question. We'd rather help you succeed than sell you a repair you don't need.</p></div>
-        <div class="pillar"><h3>Fair for collectors</h3><p>Honest grading, honest prices and no scalping. We want new players to be able to start their collection.</p></div>
+        <div class="pillar"><h3>Right to repair</h3><p>Your console is yours. You should be able to open it, fix it, mod it and keep it running, and we'll help you learn how.</p></div>
+        <div class="pillar"><h3>Preservation</h3><p>These games and machines are history. Keeping them working, documented and playable matters.</p></div>
+        <div class="pillar"><h3>Free advice</h3><p>Stuck on a setup or a fix? Send us a question. Sharing what we know is the whole point.</p></div>
+        <div class="pillar"><h3>Fair for collectors</h3><p>We call out hype pricing and help new players start a collection without overpaying.</p></div>
       </div>
     </div>
   </section>
 
-  <section class="section" style="padding-top:0">
+  <section class="section about" id="about">
     <div class="wrap">
-      <div class="reviews">
-        <figure class="review" style="margin:0">
-          <div class="stars" aria-label="5 stars">★★★★★</div>
-          <p>"My NES blinked for twenty years. One new connector and a cleaning later, it boots every single time."</p>
-          <cite>Sample review · NES repair</cite>
-        </figure>
-        <figure class="review" style="margin:0">
-          <div class="stars" aria-label="5 stars">★★★★★</div>
-          <p>"The IPS screen on my Game Boy looks unreal. Clean install, and they kept the original shell."</p>
-          <cite>Sample review · Game Boy mod</cite>
-        </figure>
-        <figure class="review" style="margin:0">
-          <div class="stars" aria-label="5 stars">★★★★★</div>
-          <p>"Bought a refurbished N64 for my kids. Tight joysticks, spotless inside. It plays like it's 1998."</p>
-          <cite>Sample review · Shop purchase</cite>
-        </figure>
+      <div class="about-copy">
+        <span class="eyebrow">About</span>
+        <h2 style="font-size:clamp(30px,4.4vw,46px)">Made by people who still play these games.</h2>
+        <p>Retro Gaming Pros is for anyone who still keeps a console hooked up to the TV, or wishes they did. We write about the hardware, the history and the games, and we fix NES and Atari consoles when they stop cooperating.</p>
+        <p>We think old games should stay playable, affordable and understood. That means sharing what we learn, supporting the right to repair, and being straight with you about what a fix really takes.</p>
+        <div><a class="btn btn-primary" href="#contact">Say hello</a></div>
+      </div>
+      <div class="bench" aria-label="What you'll find here">
+        <div class="bench-title">WHAT YOU'LL FIND HERE</div>
+        <div class="row"><span class="k">Hardware guides</span><span class="v">How it works</span></div>
+        <div class="row"><span class="k">Fix-it explainers</span><span class="v">Why it breaks</span></div>
+        <div class="row"><span class="k">Console history</span><span class="v">1977 to 2001</span></div>
+        <div class="row"><span class="k">Setup help</span><span class="v">Old games, new TVs</span></div>
+        <div class="row"><span class="k">Collecting tips</span><span class="v">Buy smart</span></div>
+        <div class="row"><span class="k">Repairs</span><span class="v">NES &amp; Atari</span></div>
       </div>
     </div>
   </section>
@@ -470,138 +166,34 @@ footer .domains{font:400 18px var(--f-crt)}
     <div class="wrap">
       <div class="contact-info">
         <span class="eyebrow">Contact</span>
-        <h2 style="font-size:clamp(30px,4.4vw,46px)">Start a repair ticket.</h2>
-        <p style="color:var(--muted);font-size:17px">Tell us what's wrong and we'll reply within one business day with next steps and shipping instructions.</p>
+        <h2 style="font-size:clamp(30px,4.4vw,46px)">Say hello.</h2>
+        <p style="color:var(--muted);font-size:17px">Suggest a blog post, ask a question about your hardware, or ask about an NES or Atari repair.</p>
         <dl class="info-list">
-          <div><dt>PHONE</dt><dd>(555) 010-8842</dd></div>
-          <div><dt>EMAIL</dt><dd>info@codebluepcrepair.com</dd></div>
-          <div><dt>SHOP</dt><dd>123 Arcade Lane, Your City, ST</dd></div>
-          <div><dt>HOURS</dt><dd>Tue–Sat · 10am–6pm</dd></div>
+          <div><dt>EMAIL</dt><dd>{{ site.email }}</dd></div>
+          <div><dt>REPAIRS</dt><dd>NES and Atari consoles</dd></div>
         </dl>
       </div>
-      <form class="ticket" id="ticketForm" novalidate>
-        <h3>Repair request</h3>
+      <form class="ticket" id="contactForm" data-to="{{ site.email }}" novalidate>
+        <h3>Send us a message</h3>
         <div class="form-grid">
           <div class="field"><label for="fName">Name</label><input id="fName" name="name" autocomplete="name" required></div>
           <div class="field"><label for="fEmail">Email</label><input id="fEmail" name="email" type="email" autocomplete="email" required></div>
-          <div class="field"><label for="fConsole">Console</label><select id="fConsole" name="console" required></select></div>
-          <div class="field"><label for="fService">Service</label>
-            <select id="fService" name="service">
-              <option>Repair</option><option>Mod / upgrade</option><option>Restoration</option><option>Sell or trade in</option>
+          <div class="field full"><label for="fTopic">What's it about?</label>
+            <select id="fTopic" name="topic">
+              <option>A question</option>
+              <option>A blog post idea</option>
+              <option>NES repair</option>
+              <option>Atari repair</option>
+              <option>Something else</option>
             </select>
           </div>
-          <div class="field full"><label for="fIssue">What's going on?</label><textarea id="fIssue" name="issue" placeholder="e.g. Powers on but the screen is black. Red light stays on."></textarea></div>
-          <div class="field full">
-            <label>How will you get it to us?</label>
-            <div class="radio-row">
-              <label><input type="radio" name="dropoff" id="fMail" value="mail" checked> Mail-in</label>
-              <label><input type="radio" name="dropoff" id="fDrop" value="drop"> Drop-off</label>
-            </div>
-          </div>
+          <div class="field full"><label for="fMsg">Message</label><textarea id="fMsg" name="message" placeholder="e.g. My NES blinks with every game. Can you take a look?"></textarea></div>
         </div>
-        <button class="btn btn-primary" type="submit" style="justify-self:start">Submit ticket</button>
-        <div class="done" id="ticketDone" hidden>
-          <b id="ticketNo"></b>
-          <span>This is a preview, so the form isn't connected yet. On the live site this will be sent to info@codebluepcrepair.com.</span>
+        <button class="btn btn-primary" type="submit" style="justify-self:start">Send message</button>
+        <div class="done" id="contactDone" hidden>
+          <b>READY TO SEND</b>
+          <span>Your email app should open with the message filled in. If it doesn't, email us at <span class="sel">{{ site.email }}</span>.</span>
         </div>
       </form>
     </div>
   </section>
-</main>
-
-<footer>
-  <div class="wrap">
-    <span>© 2026 Retro Gaming Pros</span>
-    <span class="domains">retrogamingpros.com</span>
-  </div>
-</footer>
-
-<script>
-(function(){
-  // ---- pixel art (drawn to tiny canvases, scaled up crisp) ----
-  var PAL={a:'#ffb238',r:'#ef4a3c',w:'#efeaf8',g:'#a9a3c9',d:'#3a3670',k:'#0b0a18',t:'#4fd1c5',p:'#7a6fd0',s:'#cfc8b8'};
-  function draw(cv,rows){var c=cv.getContext('2d');cv.width=rows[0].length;cv.height=rows.length;rows.forEach(function(r,y){for(var x=0;x<r.length;x++){var ch=r[x];if(ch!=='.'&&PAL[ch]){c.fillStyle=PAL[ch];c.fillRect(x,y,1,1);}}});}
-  var ART={
-    logo:["............","..rrrrrrrr..",".rwwwwwwwwr.",".rwkkkkkkwr.",".rwkaaaakwr.",".rwkakkakwr.",".rwkaaaakwr.",".rwkkkkkkwr.",".rwwwwwwwwr.",".rrrwrrwrrr.","..rrrrrrrr..","............"],
-    power:["....aaa....","..a.aaa.a..",".aa.aaa.aa.","aa..aaa..aa","aa.......aa","aa.......aa","aa.......aa",".aa.....aa.","..aaaaaaa..","...aaaaa...","..........."],
-    disc:["...aaaaa...",".aawwwwwaa.",".awwwwwwwa.","awwwaaawwwa","awwakkkawwa","awwakkkawwa","awwwaaawwwa",".awwwwwwwa.",".aawwwwwaa.","...aaaaa...","..........."],
-    pad:["...........",".ggggggggg.","gggggggggggg".slice(0,11),"gaggggggrgg","aaaggggrgrg","gaggggggrgg","ggggggggggg",".gggg.gggg.","..gg...gg..","...........","..........."],
-    handheld:["..sssssss..","..skkkkks..","..sktttks..","..sktttks..","..skkkkks..","..sssssss..","..sasssrs..","..aaassss..","..sassrss..","..sssssss..","..........."],
-    hdmi:["...........","aaaaaaaaaaa","awwwwwwwwwa",".awkwkwkwa.","..aaaaaaa..","....aaa....","....aaa....","....aaa....","....aaa....","....aaa....","..........."],
-    cart:["..ggggggg..",".gggggggggg".slice(0,11),".grrrrrrrg.",".grwwwwwrg.",".grwaaawrg.",".grwwwwwrg.",".grrrrrrrg.",".ggggggggg.",".g.g.g.g.g.","..ggggggg..","..........."],
-    nes:["..............","..............",".ggggggggggggg".slice(0,14),"gggggggggggggg","gkkkkkkkkkkkkg","gggggggggggggg","gddgggggggggg".padEnd(14,'g'),"grgrgggggggggg","gggggggggggggg","dddddddddddddd","..............",".............."],
-    snes:["..............","..gggggggggg..",".gggppppppggg.","gggppppppppggg","ggggkkkkkkgggg","gggggggggggggg","gpggggggggggrg","gpggggggggggrg","gggggggggggggg",".gggggggggggg.","..............",".............."],
-    n64:["..............","....kkkkkk....","...kkkkkkkk...","..kkkaaaakkk..",".kkkkkkkkkkkk.","kkkkkkkkkkkkkk","kkrkkkkkkkkkpk","kkkkkkkkkkkkkk",".kkkkkkkkkkkk.","..............","..............",".............."],
-    genesis:["..............","..............",".kkkkkkkkkkkk.","kkkkkkkkkkkkkk","kkkkddddddkkkk","kkkkkkkkkkkkkk","krkkkkkkkkkkkk","kkkkkkkkkkkkkk",".kkkkkkkkkkkk.","..............","..............",".............."],
-    ps1:["..............","..............",".gggggggggggg.","gggggggggggggg","gggggddddggggg","ggggdkkkkdgggg","ggggdkkkkdgggg","gggggddddggggg","gtgggggggggrgg","gggggggggggggg","..............",".............."],
-    gb:["..ssssssssss..","..skkkkkkkks..","..sktttttkks..","..sktttttkks..","..sktttttkks..","..skkkkkkkks..","..ssssssssss..","..saasssrrss..","..aaassssrss..","..saassssss...","..ssssssssss..",".............."],
-    gc:["..............","..pppppppppp..",".pppppppppppp.",".ppppkkkkpppp.",".pppkppppkppp.",".ppppkkkkpppp.",".pppppppppppp.",".pppppppppppp.","..pppppppppp..","..k........k..","..............",".............."]
-  };
-  draw(document.getElementById('logoMark'),ART.logo);
-  document.querySelectorAll('.svc-icon').forEach(function(c){var a=ART[c.dataset.icon];if(a){draw(c,a);c.style.imageRendering='pixelated';}});
-
-  // ---- systems marquee ----
-  var systems=['ATARI 2600','NES','SNES','NINTENDO 64','GAMECUBE','GAME BOY','GBA','SEGA GENESIS','GAME GEAR','DREAMCAST','PLAYSTATION','PS2','TURBOGRAFX-16','NEO GEO'];
-  var tr=document.getElementById('systemsTrack');
-  tr.innerHTML=systems.concat(systems).map(function(s){return '<span>'+s+'</span>';}).join('');
-
-  // ---- quick diagnosis ----
-  var DX={
-    'NES':[['Blinking red light','72-pin connector replacement + pin clean','$35','2-3 days'],['No picture / grey screen','Video RF/AV circuit repair','from $40','3-5 days'],['Want a sharper picture','RGB or HDMI mod','from $90','5-7 days']],
-    'SNES':[['No power','Fuse + regulator repair','from $30','2-3 days'],['Yellowed case','Retrobright shell restoration','$40','5-7 days'],['Blurry on modern TV','RGB mod + cable','from $50','3-5 days']],
-    'Nintendo 64':[['Loose joystick','Joystick rebuild or replacement','$25','1-2 days'],['Black screen','Power board + RCP diagnosis','from $45','3-5 days'],['Blurry on modern TV','HDMI kit install','from $90','5-7 days']],
-    'Sega Genesis':[['No sound','Audio circuit recap','from $45','3-5 days'],['No power','Power jack / regulator','$30','2-3 days'],['Blurry on modern TV','RGB / SCART setup','from $50','3-5 days']],
-    'Game Boy':[['Dim or dead pixels','IPS backlit screen install','from $65','2-4 days'],['No sound','Speaker or amp repair','$25','1-2 days'],['Worn out shell','New shell + buttons','from $30','1-2 days']],
-    'Game Gear':[['Dim screen or no sound','Full capacitor recap','$55','3-5 days'],['Want a modern screen','IPS / LCD screen upgrade','from $85','5-7 days']],
-    'PlayStation':[['Discs won\'t read','Laser calibration or swap','from $45','2-4 days'],['Disc tray stuck','Drive mechanism service','$35','2-3 days']],
-    'GameCube':[['Disc won\'t spin','Drive service + laser check','$40','2-4 days'],['No video','Digital AV / GCHD install','from $90','5-7 days']],
-    'Dreamcast':[['GD-ROM not reading','GD-ROM service or laser','from $50','3-5 days'],['Loud fan','Quiet fan swap','$25','1-2 days']],
-    'Game cartridge':[['Won\'t save my game','Save battery (CR2032) socketed','$12','1 day'],['Won\'t boot','Pin clean + board check','$5','1 day']]
-  };
-  var sc=document.getElementById('dxConsole'), ss=document.getElementById('dxSymptom'), out=document.getElementById('dxOut');
-  Object.keys(DX).forEach(function(k){sc.add(new Option(k,k));});
-  function fillSym(){ss.innerHTML='';DX[sc.value].forEach(function(s,i){ss.add(new Option(s[0],i));});show();}
-  function show(){var s=DX[sc.value][ss.value];
-    out.innerHTML='<div class="dim">&gt; FIX: '+s[1]+'</div><div class="price">&gt; EST: '+s[2]+'</div><div class="dim">&gt; TIME: '+s[3]+' on the bench</div>';}
-  sc.addEventListener('change',fillSym); ss.addEventListener('change',show);
-  sc.value='NES'; fillSym();
-
-  // ---- products ----
-  var P=[
-    {n:'NES Console',art:'nes',cat:'nintendo',g:'A',meta:'Recapped · new 72-pin · 2 controllers',p:149},
-    {n:'Super Nintendo',art:'snes',cat:'nintendo',g:'A',meta:'Retrobrighted shell · RGB ready',p:189},
-    {n:'Nintendo 64',art:'n64',cat:'nintendo',g:'B+',meta:'Expansion Pak · rebuilt stick',p:169},
-    {n:'GameCube Indigo',art:'gc',cat:'nintendo',g:'A',meta:'Drive serviced · memory card',p:179},
-    {n:'Sega Genesis Model 1',art:'genesis',cat:'sega',g:'A-',meta:'High Definition Graphics · recapped',p:139},
-    {n:'PlayStation (SCPH-1001)',art:'ps1',cat:'sony',g:'B+',meta:'New laser · audio-out board',p:129},
-    {n:'Game Boy DMG IPS',art:'gb',cat:'handheld nintendo',g:'A',meta:'Backlit IPS · new shell · USB-C',p:159},
-    {n:'Game Boy DMG Original',art:'gb',cat:'handheld nintendo',g:'B',meta:'Original screen · tested speaker',p:89}
-  ];
-  var grid=document.getElementById('products');
-  grid.innerHTML=P.map(function(x,i){return '<article class="product" data-cat="'+x.cat+'"><div class="product-art"><span class="grade">GRADE '+x.g+'</span><canvas data-art="'+x.art+'"></canvas></div><div class="product-body"><h3>'+x.n+'</h3><span class="meta">'+x.meta+'</span><div class="product-foot"><span class="price">$'+x.p+'</span><button type="button" id="buy'+i+'" data-name="'+x.n+'">Ask about it</button></div></div></article>';}).join('');
-  grid.querySelectorAll('canvas').forEach(function(c){draw(c,ART[c.dataset.art]);});
-  grid.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;
-    document.getElementById('fService').value='Repair';
-    document.getElementById('fIssue').value='Hi! Is the '+b.dataset.name+' still available?';
-    document.getElementById('contact').scrollIntoView({behavior:'smooth'});});
-  document.querySelectorAll('.chip').forEach(function(ch){ch.addEventListener('click',function(){
-    document.querySelectorAll('.chip').forEach(function(o){o.setAttribute('aria-pressed',o===ch?'true':'false');});
-    var f=ch.dataset.filter;grid.querySelectorAll('.product').forEach(function(p){p.hidden=!(f==='all'||p.dataset.cat.split(' ').indexOf(f)>-1);});
-  });});
-
-  // ---- form ----
-  var fc=document.getElementById('fConsole');
-  ['Choose a system','NES','Super Nintendo','Nintendo 64','GameCube','Game Boy / GBC','Game Boy Advance','Sega Genesis','Game Gear','Dreamcast','PlayStation','PlayStation 2','Atari 2600','TurboGrafx-16','Neo Geo','Game cartridge','Other'].forEach(function(s,i){fc.add(new Option(s,i?s:''));});
-  document.getElementById('ticketForm').addEventListener('submit',function(e){e.preventDefault();
-    var f=e.target, ok=true;['fName','fEmail','fConsole'].forEach(function(id){var el=document.getElementById(id);if(!el.value.trim()||(el.type==='email'&&!/\S+@\S+\.\S+/.test(el.value))){el.style.borderColor='var(--red)';ok=false;}else el.style.borderColor='';});
-    if(!ok)return;
-    document.getElementById('ticketNo').textContent='TICKET #RG-'+(1000+Math.floor(Math.random()*9000))+' CREATED';
-    document.getElementById('ticketDone').hidden=false;});
-
-  // ---- mobile menu ----
-  var mb=document.getElementById('menuBtn'), nav=document.getElementById('siteNav');
-  mb.addEventListener('click',function(){var o=nav.dataset.open!=='true';nav.dataset.open=o;mb.setAttribute('aria-expanded',o);});
-  nav.addEventListener('click',function(e){if(e.target.tagName==='A'){nav.dataset.open='false';mb.setAttribute('aria-expanded','false');}});
-})();
-</script>
-</body></html>
