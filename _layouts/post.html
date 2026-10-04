@@ -1,0 +1,35 @@
+---
+layout: default
+---
+<article class="post">
+  <header class="post-hero">
+    <div class="wrap post-hero-inner">
+      <a class="back" href="{{ '/blog/' | relative_url }}"><span aria-hidden="true">◀</span> All posts</a>
+      <canvas class="post-icon big" data-icon="{{ page.icon | default: 'cart' }}" aria-hidden="true"></canvas>
+      <span class="eyebrow"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%B %-d, %Y' }}</time> · {{ content | number_of_words | divided_by: 200 | plus: 1 }} min read</span>
+      <h1>{{ page.title }}</h1>
+      {% if page.description %}<p class="lede">{{ page.description }}</p>{% endif %}
+    </div>
+  </header>
+  <div class="wrap">
+    <div class="prose">
+      {{ content }}
+    </div>
+    <aside class="post-cta">
+      <div>
+        <b>Need this fixed?</b>
+        <p>Diagnosis is free, and nothing gets repaired until you approve the quote.</p>
+      </div>
+      <a class="btn btn-primary" href="{{ '/' | relative_url }}#contact">Start a repair</a>
+    </aside>
+    {% assign others = site.posts | where_exp: "p", "p.url != page.url" %}
+    {% if others.size > 0 %}
+    <section class="more-posts">
+      <h2>Keep reading</h2>
+      <div class="post-grid">
+        {% for p in others limit:2 %}{% include post-card.html post=p %}{% endfor %}
+      </div>
+    </section>
+    {% endif %}
+  </div>
+</article>

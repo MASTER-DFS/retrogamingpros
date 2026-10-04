@@ -1,0 +1,21 @@
+{% assign home = '/' | relative_url %}
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="{{ home }}" aria-label="Retro Gaming Pros home">
+      <canvas class="logo-mark" id="logoMark" width="12" height="12"></canvas>
+      <span class="logo-text"><b>RETRO GAMING</b><span>Pros · Repair &amp; Shop</span></span>
+    </a>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="siteNav">MENU</button>
+    <nav id="siteNav" data-open="false" aria-label="Main">
+      <ul>
+        <li><a href="{{ home }}#repairs">Repairs</a></li>
+        <li><a href="{{ home }}#shop">Shop</a></li>
+        <li><a href="{{ '/blog/' | relative_url }}"{% if page.url contains '/blog/' %} aria-current="page"{% endif %}>Blog</a></li>
+        <li><a href="{{ home }}#about">About</a></li>
+        <li><a href="{{ home }}#community">Community</a></li>
+        <li><a href="{{ home }}#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-primary" href="{{ home }}#contact">Start a repair</a>
+  </div>
+</header>
