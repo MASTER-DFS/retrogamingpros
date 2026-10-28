@@ -44,4 +44,4 @@ Here's the safe way to do it:
 
 As a rough guide, any Game Boy or Game Boy Color game that saves progress, rather than giving you passwords, probably has a battery. That includes the Pokémon games, *The Legend of Zelda: Link's Awakening* and many RPGs. Many Super Nintendo cartridges that save use the same kind of battery, usually a CR2032.
 
-Not sure about yours? [Ask us](/#contact) with the name of the game, and we'll help you find out.
+Not sure about yours? Search for your game's name plus "save battery", and you'll usually find photos of the board showing whether it has one.

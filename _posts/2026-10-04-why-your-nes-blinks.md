@@ -1,5 +1,5 @@
 ---
-title: "Why your NES blinks, and how we fix it for good"
+title: "Why your NES blinks, and how to fix it for good"
 description: "The blinking red light is the most famous fault in retro gaming. Here's what causes it, what actually helps, and which home remedies make it worse."
 icon: nes
 date: 2026-10-04 12:00:00 -0400
@@ -42,4 +42,4 @@ A lasting NES blink repair looks like this:
 
 The later top-loading NES (model NES-101) doesn't have this problem nearly as often. It uses a direct card-edge slot instead of the push-down connector, and Nintendo removed the lockout chip from it. If you own one and it won't boot, the cause is usually somewhere else, like the power supply or a dirty cartridge.
 
-If your NES is blinking, clean your cartridges first. If it still blinks, a new connector will almost certainly sort it out. We repair NES consoles, so [get in touch](/#contact) if you'd rather have us do it.
+If your NES is blinking, clean your cartridges first. If it still blinks, a new connector will almost certainly sort it out.

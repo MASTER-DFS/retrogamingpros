@@ -17,10 +17,10 @@ layout: default
     </div>
     <aside class="post-cta">
       <div>
-        <b>Got a question about your console?</b>
-        <p>Ask us anything, from setup help to NES and Atari repairs.</p>
+        <b>More guides on the way</b>
+        <p>Follow the blog by RSS to catch new posts as they land.</p>
       </div>
-      <a class="btn btn-primary" href="{{ '/' | relative_url }}#contact">Get in touch</a>
+      <a class="btn btn-primary" href="{{ '/feed.xml' | relative_url }}">Follow by RSS</a>
     </aside>
     {% assign others = site.posts | where_exp: "p", "p.url != page.url" %}
     {% if others.size > 0 %}

@@ -146,28 +146,6 @@
     });});
   }
 
-  // ---- repair buttons preset the contact form ----
-  document.querySelectorAll('[data-topic]').forEach(function(b){b.addEventListener('click',function(){
-    var t=$('fTopic'), m=$('fMsg');if(t)t.value=b.dataset.topic;
-    if(m&&!m.value)m.value=b.dataset.topic==='Atari repair'?'Which Atari: \nWhat it does: ':'What it does: ';
-    $('contact').scrollIntoView({behavior:reduce?'auto':'smooth'});
-    setTimeout(function(){if(m)m.focus({preventScroll:true});},reduce?0:500);
-  });});
-
-  // ---- contact form: opens the visitor's email app with the message ready ----
-  var form=$('contactForm');
-  if(form){
-    form.addEventListener('submit',function(e){e.preventDefault();
-      var ok=true;['fName','fEmail','fMsg'].forEach(function(id){var el=$(id);if(!el.value.trim()||(el.type==='email'&&!/\S+@\S+\.\S+/.test(el.value))){el.style.borderColor='var(--red)';ok=false;}else el.style.borderColor='';});
-      if(!ok)return;
-      var to=form.dataset.to;
-      var subject='[Retro Gaming Pros] '+$('fTopic').value+' from '+$('fName').value.trim();
-      var body=$('fMsg').value.trim()+'\n\n'+$('fName').value.trim()+'\n'+$('fEmail').value.trim();
-      $('contactDone').hidden=false;
-      window.location.href='mailto:'+to+'?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
-    });
-  }
-
   // ---- systems marquee ----
   var marquee=SYS.map(function(x){return x.n.toUpperCase();}).concat(['GAME GEAR','TURBOGRAFX-16','NEO GEO','ATARI 7800','PS2']);
   var tr=$('systemsTrack');

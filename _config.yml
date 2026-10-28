@@ -1,8 +1,7 @@
 title: Retro Gaming Pros
-description: Retro gaming guides, console history and hardware explainers, plus NES and Atari console repairs. Made by people who still play these games.
+description: Retro gaming guides, console history and hardware explainers. Made by people who still play these games.
 url: https://retrogamingpros.com
 baseurl: ""
-email: info@codebluepcrepair.com
 timezone: America/New_York
 permalink: /blog/:year/:month/:title/
 markdown: kramdown

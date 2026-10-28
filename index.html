@@ -5,9 +5,9 @@ layout: default
     <canvas class="hero-fx" id="heroFx" aria-hidden="true"></canvas>
     <div class="wrap">
       <div class="hero-copy">
-        <span class="eyebrow">Play · Preserve · Repair</span>
+        <span class="eyebrow">Play · Preserve · Explore</span>
         <h1>For everyone who still <em>presses start.</em></h1>
-        <p>Retro Gaming Pros is all about the consoles, handhelds and cartridges we grew up with. We write guides, history and hardware explainers, and we repair NES and Atari consoles when yours needs some help.</p>
+        <p>Retro Gaming Pros is all about the consoles, handhelds and cartridges we grew up with. We write guides, console history and hardware explainers for anyone who still keeps a console hooked up to the TV.</p>
         <div class="hero-ctas">
           <a class="btn btn-primary" href="{{ '/blog/' | relative_url }}">Read the blog</a>
           <a class="btn btn-ghost" href="#systems">Explore the systems</a>
@@ -15,7 +15,7 @@ layout: default
         <div class="trust">
           <span>Guides &amp; history</span>
           <span>Community first</span>
-          <span>NES &amp; Atari repairs</span>
+          <span>Hardware explainers</span>
         </div>
       </div>
 
@@ -87,44 +87,6 @@ layout: default
     </div>
   </section>
 
-  <section class="section repairs" id="repairs">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="eyebrow">Repairs</span>
-        <h2>NES and Atari repairs.</h2>
-        <p>Right now we repair Nintendo Entertainment System and Atari consoles. Tell us what's going on and we'll get back to you about a fix. More systems are on the way.</p>
-      </div>
-      <div class="services two">
-        <article class="svc">
-          <canvas class="svc-icon" data-icon="nes" width="14" height="12"></canvas>
-          <h3>Nintendo (NES)</h3>
-          <p>The front-loading NES is the most-loved console we work on, and its common faults are very fixable.</p>
-          <ul>
-            <li>Blinking red light and grey screen</li>
-            <li>72-pin connector replacement</li>
-            <li>No power or no picture</li>
-            <li>Controller and controller port repair</li>
-            <li>Cartridge cleaning and testing</li>
-          </ul>
-          <button class="btn btn-ghost" type="button" data-topic="NES repair">Ask about an NES repair</button>
-        </article>
-        <article class="svc">
-          <canvas class="svc-icon" data-icon="atari" width="14" height="12"></canvas>
-          <h3>Atari</h3>
-          <p>Woodgrain and all. Atari hardware is simple and tough, which makes it a great candidate for a second life.</p>
-          <ul>
-            <li>Won't power on</li>
-            <li>No picture, snowy or rolling picture</li>
-            <li>Sticky or dead console switches</li>
-            <li>Joystick and controller port repair</li>
-            <li>Cartridge slot cleaning</li>
-          </ul>
-          <button class="btn btn-ghost" type="button" data-topic="Atari repair">Ask about an Atari repair</button>
-        </article>
-      </div>
-    </div>
-  </section>
-
   <section class="section community" id="community">
     <div class="wrap">
       <div class="section-head">
@@ -135,7 +97,7 @@ layout: default
       <div class="pillars">
         <div class="pillar"><h3>Right to repair</h3><p>Your console is yours. You should be able to open it, fix it, mod it and keep it running, and we'll help you learn how.</p></div>
         <div class="pillar"><h3>Preservation</h3><p>These games and machines are history. Keeping them working, documented and playable matters.</p></div>
-        <div class="pillar"><h3>Free advice</h3><p>Stuck on a setup or a fix? Send us a question. Sharing what we know is the whole point.</p></div>
+        <div class="pillar"><h3>Free knowledge</h3><p>Every guide here is free to read. Sharing what we know about this hardware is the whole point.</p></div>
         <div class="pillar"><h3>Fair for collectors</h3><p>We call out hype pricing and help new players start a collection without overpaying.</p></div>
       </div>
     </div>
@@ -146,9 +108,9 @@ layout: default
       <div class="about-copy">
         <span class="eyebrow">About</span>
         <h2 style="font-size:clamp(30px,4.4vw,46px)">Made by people who still play these games.</h2>
-        <p>Retro Gaming Pros is for anyone who still keeps a console hooked up to the TV, or wishes they did. We write about the hardware, the history and the games, and we fix NES and Atari consoles when they stop cooperating.</p>
-        <p>We think old games should stay playable, affordable and understood. That means sharing what we learn, supporting the right to repair, and being straight with you about what a fix really takes.</p>
-        <div><a class="btn btn-primary" href="#contact">Say hello</a></div>
+        <p>Retro Gaming Pros is for anyone who still keeps a console hooked up to the TV, or wishes they did. We write about the hardware, the history and the games.</p>
+        <p>We think old games should stay playable, affordable and understood. That means sharing what we learn and supporting the right to repair.</p>
+        <div><a class="btn btn-primary" href="{{ '/blog/' | relative_url }}">Read the blog</a></div>
       </div>
       <div class="bench" aria-label="What you'll find here">
         <div class="bench-title">WHAT YOU'LL FIND HERE</div>
@@ -157,43 +119,6 @@ layout: default
         <div class="row"><span class="k">Console history</span><span class="v">1977 to 2001</span></div>
         <div class="row"><span class="k">Setup help</span><span class="v">Old games, new TVs</span></div>
         <div class="row"><span class="k">Collecting tips</span><span class="v">Buy smart</span></div>
-        <div class="row"><span class="k">Repairs</span><span class="v">NES &amp; Atari</span></div>
       </div>
-    </div>
-  </section>
-
-  <section class="section contact" id="contact">
-    <div class="wrap">
-      <div class="contact-info">
-        <span class="eyebrow">Contact</span>
-        <h2 style="font-size:clamp(30px,4.4vw,46px)">Say hello.</h2>
-        <p style="color:var(--muted);font-size:17px">Suggest a blog post, ask a question about your hardware, or ask about an NES or Atari repair.</p>
-        <dl class="info-list">
-          <div><dt>EMAIL</dt><dd>{{ site.email }}</dd></div>
-          <div><dt>REPAIRS</dt><dd>NES and Atari consoles</dd></div>
-        </dl>
-      </div>
-      <form class="ticket" id="contactForm" data-to="{{ site.email }}" novalidate>
-        <h3>Send us a message</h3>
-        <div class="form-grid">
-          <div class="field"><label for="fName">Name</label><input id="fName" name="name" autocomplete="name" required></div>
-          <div class="field"><label for="fEmail">Email</label><input id="fEmail" name="email" type="email" autocomplete="email" required></div>
-          <div class="field full"><label for="fTopic">What's it about?</label>
-            <select id="fTopic" name="topic">
-              <option>A question</option>
-              <option>A blog post idea</option>
-              <option>NES repair</option>
-              <option>Atari repair</option>
-              <option>Something else</option>
-            </select>
-          </div>
-          <div class="field full"><label for="fMsg">Message</label><textarea id="fMsg" name="message" placeholder="e.g. My NES blinks with every game. Can you take a look?"></textarea></div>
-        </div>
-        <button class="btn btn-primary" type="submit" style="justify-self:start">Send message</button>
-        <div class="done" id="contactDone" hidden>
-          <b>READY TO SEND</b>
-          <span>Your email app should open with the message filled in. If it doesn't, email us at <span class="sel">{{ site.email }}</span>.</span>
-        </div>
-      </form>
     </div>
   </section>

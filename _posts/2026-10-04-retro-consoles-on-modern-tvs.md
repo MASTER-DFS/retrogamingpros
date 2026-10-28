@@ -51,5 +51,3 @@ A good CRT television still has zero lag and handles 240p natively. It's also th
 - **Casual play on one console:** the best cable it supports, plus setting your TV to its game mode and 4:3.
 - **A shelf of consoles:** a quality upscaler with RGB or component cables.
 - **One console you play constantly:** an internal HDMI or RGB mod.
-
-Not sure what your console and TV need? [Send us a question](/#contact) and we'll point you in the right direction.
